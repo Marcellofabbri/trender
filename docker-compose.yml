@@ -6,36 +6,36 @@ services:
   # PostgreSQL Database
   trender-postgres:
     image: "postgres:9.6-alpine"
-    container_name: trender-postgres
+    container_name: eu.marcellofabbri.trender-postgres
     volumes:
-      - trender-data:/ProgramFiles/PostgreSQL/12/data
+      - eu.marcellofabbri.trender-data:/ProgramFiles/PostgreSQL/12/data
     ports:
       - 5432:5432
 
     environment:
-      - POSTGRES_DB=trender
+      - POSTGRES_DB=eu.marcellofabbri.trender
       - POSTGRES_USER=trendz
       - POSTGRES_PASSWORD=1234567
 
   # Spring Boot Backend
   trender-backend:
     build: ./TrenderBackend
-    container_name: trender-backend
+    container_name: eu.marcellofabbri.trender-backend
 
     environment:
-      - DB_SERVER=trender-postgres
-      - POSTGRES_DB=trender
+      - DB_SERVER=eu.marcellofabbri.trender-postgres
+      - POSTGRES_DB=eu.marcellofabbri.trender
       - POSTGRES_USER=trendz
       - POSTGRES_PASSWORD=1234567
     ports:
       - 8081:8081
     links:
-      - trender-postgres
+      - eu.marcellofabbri.trender-postgres:eu.marcellofabbri.trender-postgres
 
   # React Frontend
   trender-frontend:
     build: ./TrenderFrontend
-    container_name: trender-frontend
+    container_name: eu.marcellofabbri.trender-frontend
 
     ports:
       - 3000:80
