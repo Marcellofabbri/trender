@@ -34,7 +34,7 @@ services:
 
   # React Frontend
   trender-frontend:
-    build: ./TrenderFrontend
+    build: trender-ui
     container_name: eu.marcellofabbri.trender-frontend
 
     ports:

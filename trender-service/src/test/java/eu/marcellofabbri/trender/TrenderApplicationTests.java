@@ -4,6 +4,7 @@ import eu.marcellofabbri.trender.TrenderApplication;
 import eu.marcellofabbri.trender.model.dto.MeasurementResponse;
 import eu.marcellofabbri.trender.model.entity.Measurement;
 import eu.marcellofabbri.trender.repository.MeasurementRepository;
+import io.zonky.test.db.AutoConfigureEmbeddedDatabase;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
@@ -26,6 +27,7 @@ import static org.assertj.core.api.Assertions.*;
 @ActiveProfiles("test")
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.DEFINED_PORT)
 @Sql(executionPhase = Sql.ExecutionPhase.BEFORE_TEST_METHOD, scripts = "classpath:/truncate.sql")
+@AutoConfigureEmbeddedDatabase
 public class TrenderApplicationTests {
 
     OffsetDateTime TIMESTAMP = OffsetDateTime.now();
