@@ -20,8 +20,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d0c10668-9459-466f-8e53-748e2eedcc4d" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/trender-service/.circleci/config.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/trender-service/.circleci/config.yml" beforeDir="false" afterPath="$PROJECT_DIR$/.circleci/config.yml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -54,11 +54,11 @@
       <recent name="eu.marcellofabbri" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\MyApps\WEBAPPS\Trender" />
       <recent name="D:\MyApps\WEBAPPS\Trender\trender-service" />
       <recent name="D:\MyApps\WEBAPPS\Trender\trender-service\src\test\resources" />
       <recent name="D:\MyApps\WEBAPPS\Trender\trender-service\src\main\resources\db" />
       <recent name="D:\MyApps\WEBAPPS\Trender\trender-service\src\main\resources" />
-      <recent name="D:\MyApps\WEBAPPS\Trender\trender-service\src\test" />
     </key>
   </component>
   <component name="RunManager" selected="Application.TrenderApplication">
