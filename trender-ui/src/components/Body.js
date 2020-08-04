@@ -1,6 +1,9 @@
 import React, {Component} from 'react';
-import logo from './logo.svg';
-import './Body.css';
+import logo from '../logo.svg';
+import '../style/Body.css';
+import MainChart from './MainChart.js';
+import TableData from './TableData.js';
+import Chart from 'chart.js';
 
 class Body extends Component {
 
@@ -38,6 +41,16 @@ class Body extends Component {
         } else {
         return (
             <div className="Body">
+                <table className="Grid">
+                    <tr>
+                        <td>
+                            <MainChart />
+                            <TableData />
+                        </td>
+                    </tr>
+                </table>
+                <button>Add</button>
+
                 <header className="App-header">
                     <h1 className="App-title">{this.state.items[0].value}</h1>
                     <h2 className="App-subtitle">{this.state.items[0].unit}</h2>
