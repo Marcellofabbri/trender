@@ -13,11 +13,11 @@ class Body extends Component {
         };
 
     componentDidMount() {
-        setInterval(this.hello, 250);
+        setInterval(this.retrievedData, 250);
     }
 
 
-    hello = () => {
+    retrievedData = () => {
         fetch('/api/measurement')
             .then(results => results.json())
             .then(json => {
@@ -42,12 +42,14 @@ class Body extends Component {
         return (
             <div className="Body">
                 <table className="Grid">
+                  <tbody>
                     <tr>
                         <td>
                             <MainChart />
-                            <TableData />
+                            <TableData data={ this.state.items } />
                         </td>
                     </tr>
+                  </tbody>
                 </table>
                 <button>Add</button>
 

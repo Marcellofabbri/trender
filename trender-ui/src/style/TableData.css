@@ -1,3 +1,17 @@
 .TableData {
   background-color: cyan;
 }
+
+.row:hover {
+  background-color: red;
+}
+
+.row {
+  contenteditable: true;
+}
+
+#minusplus {
+  width: 40px;
+  font-weight: bold;
+  color: red;
+}
