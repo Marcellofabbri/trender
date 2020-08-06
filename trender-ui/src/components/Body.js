@@ -13,7 +13,7 @@ class Body extends Component {
         };
 
     componentDidMount() {
-        setInterval(this.retrievedData, 250);
+        this.retrievedData();
     }
 
 
