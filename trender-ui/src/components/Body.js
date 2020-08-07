@@ -6,61 +6,65 @@ import TableData from './TableData.js';
 import Chart from 'chart.js';
 
 class Body extends Component {
+  constructor(props) {
+    super(props);
+    this.handler = this.handler.bind(this);
+  }
 
-    state = {
-        isLoaded: false,
-        items: [],
-        };
+  state = {
+    isLoaded: false,
+    items: [],
+    reload: false
+  };
 
-    componentDidMount() {
-        this.retrievedData();
+  handler() {
+    this.setState({
+      reload: true
+    })
+  }
+
+  componentDidMount() {
+    this.retrievedData();
+  }
+
+  retrievedData = () => {
+    fetch('/api/measurement')
+      .then(results => results.json())
+      .then(json => {
+      console.log(json)
+        this.setState({
+          isLoaded: true,
+          items: json
+          });
+      });
+  };
+
+  render() {
+    let {
+      isLoaded,
+      items
+      } = this.state;
+
+    if (!isLoaded) {
+      return (<div> Loading... </div>)
+    } else {
+      return (
+        <div className="Body">
+          <table className="Grid">
+            <tbody>
+              <tr>
+                <td>
+                  <MainChart />
+                  <TableData data={ this.state.items } action={ this.handler }/>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          <button>Add</button>
+        </div>
+      );
     }
-
-
-    retrievedData = () => {
-        fetch('/api/measurement')
-            .then(results => results.json())
-            .then(json => {
-            console.log(json)
-                this.setState({
-                    isLoaded: true,
-                    items: json
-                    });
-            });
-    };
-
-    render() {
-
-        let {
-            isLoaded,
-            items
-            } = this.state;
-
-        if (!isLoaded) {
-            return (<div> Loading... </div>)
-        } else {
-        return (
-            <div className="Body">
-                <table className="Grid">
-                  <tbody>
-                    <tr>
-                        <td>
-                            <MainChart />
-                            <TableData data={ this.state.items } />
-                        </td>
-                    </tr>
-                  </tbody>
-                </table>
-                <button>Add</button>
-
-                <header className="App-header">
-                    <h1 className="App-title">{this.state.items[0].value}</h1>
-                    <h2 className="App-subtitle">{this.state.items[0].unit}</h2>
-                </header>
-            </div>
-        );
-        }
-    }
+  }
 }
 
 export default Body;

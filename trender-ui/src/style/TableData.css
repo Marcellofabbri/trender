@@ -10,10 +10,16 @@
   contenteditable: true;
 }
 
-#minusplus {
+#minus {
   width: 40px;
   font-weight: bold;
   color: red;
+}
+
+#plus {
+  width: 40px;
+  font-weight: bold;
+  color: green;
 }
 
 #send {

@@ -1,51 +1,67 @@
 import React, {Component} from 'react';
+import axios from 'axios';
 import '../style/TableData.css';
 import PostEntryForm from './PostEntryForm';
 
 class TableData extends Component {
+  state = {
+    showForm: false
+  }
 
-    render() {
-      const { data } = this.props;
-      var rows = data.map(row => {
-        return(
-          <tr className="row" id={ row.id }>
-            <td>{ timestampStringConverter(row.createdAt) }</td>
-            <td>{ row.value }</td>
-            <td>{ row.unit }</td>
-            <td><button id="minusplus">‒</button></td>
-          </tr>
-          )
-        })
-        return(
-          <div className="TableData">
-            <table>
-              <thead>
-                <tr>
-                  <th>Timestamp</th>
-                  <th>Value</th>
-                  <th>Unit</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td><input type="text" ref={ this.timeInput } placeholder="Time"/></td>
-                  <td><input type="text" ref={ this.valueInput } placeholder="Value"/></td>
-                  <td><input type="text" ref={ this.unitInput } placeholder="Unit"/></td>
-                  <td><button
-                    id="send">
-                    →
-                    </button>
-                  </td>
-                </tr>
-                <tr>
-                  <PostEntryForm />
-                </tr>
-                { rows }
-              </tbody>
-            </table>
-          </div>
+  revealForm = () => {
+    this.setState({
+      showForm: true
+    });
+  }
+
+  hideForm = () => {
+    this.setState({
+      showForm: false
+    });
+  }
+
+  onDeleteEntry = (e) => {
+    var id = e.target.name;
+    axios.delete(`/api/measurement/${id}`)
+      .then(response => {
+        console.log(response)
+      })
+      .catch(error => {
+        console.log(error)
+      });
+  }
+
+  render() {
+    const { data, action } = this.props;
+    var rows = data.map(row => {
+      return(
+        <tr className="row" id={ row.id }>
+          <td>{ timestampStringConverter(row.createdAt) }</td>
+          <td>{ row.value }</td>
+          <td>{ row.unit }</td>
+          <td><button id="minus" name={ row.id } onClick={ this.onDeleteEntry } >ꟷ</button></td>
+       </tr>
         )
-    }
+      })
+      return(
+        <div className="TableData">
+          <table>
+            <thead>
+              <tr>
+                <th>Timestamp</th>
+                <th>Value</th>
+                <th>Unit</th>
+                <th><button id="plus" onClick={ this.state.showForm ? this.hideForm : this.revealForm }>{ this.state.showForm ? "×" : "+"}</button></th>
+              </tr>
+              { this.state.showForm ? <PostEntryForm /> : null }
+            </thead>
+            <tbody>
+              { rows }
+            </tbody>
+          </table>
+        </div>
+      )
+  }
 }
 
 export default TableData;
