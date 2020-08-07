@@ -20,26 +20,34 @@ class TableData extends Component {
     });
   }
 
-  onDeleteEntry = (e) => {
-    var id = e.target.name;
-    axios.delete(`/api/measurement/${id}`)
-      .then(response => {
-        console.log(response)
-      })
-      .catch(error => {
-        console.log(error)
-      });
-  }
+//  onDeleteEntry = (e) => {
+//    var id = e.target.name;
+//    axios.delete(`/api/measurement/${id}`)
+//      .then(response => {
+//        console.log(response)
+//      })
+//      .catch(error => {
+//        console.log(error)
+//      });
+//  }
 
   render() {
     const { data, action } = this.props;
     var rows = data.map(row => {
+      var rowId = row.id;
       return(
-        <tr className="row" id={ row.id }>
+        <tr className="row" key={ row.id }>
           <td>{ timestampStringConverter(row.createdAt) }</td>
           <td>{ row.value }</td>
           <td>{ row.unit }</td>
-          <td><button id="minus" name={ row.id } onClick={ this.onDeleteEntry } >ꟷ</button></td>
+          <td><button
+            id="minus"
+            name={ row.id }
+            onClick={ () => action(rowId) }
+            >
+            ꟷ
+            </button>
+            </td>
        </tr>
         )
       })
