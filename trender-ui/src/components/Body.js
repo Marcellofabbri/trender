@@ -13,7 +13,8 @@ class Body extends Component {
     this.state = {
         isLoaded: false,
         items: [],
-        reload: false
+        reload: false,
+        chartData: {}
       };
   }
 
@@ -39,10 +40,6 @@ class Body extends Component {
       });
   };
 
-  printState = () => {
-    console.log(this.state);
-  }
-
   onDeleteEntry = (id) => {
     axios.delete(`/api/measurement/${id}`)
       .then(response => {
@@ -55,6 +52,7 @@ class Body extends Component {
         console.log(error)
       });
   }
+
 
   render() {
     let {
@@ -72,7 +70,7 @@ class Body extends Component {
             <tbody>
               <tr>
                 <td>
-                  <MainChart />
+                  <MainChart data={ this.state.items } />
                   <TableData data={ this.state.items } action={ this.onDeleteEntry }/>
                 </td>
               </tr>

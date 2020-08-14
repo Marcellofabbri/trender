@@ -20,17 +20,6 @@ class TableData extends Component {
     });
   }
 
-//  onDeleteEntry = (e) => {
-//    var id = e.target.name;
-//    axios.delete(`/api/measurement/${id}`)
-//      .then(response => {
-//        console.log(response)
-//      })
-//      .catch(error => {
-//        console.log(error)
-//      });
-//  }
-
   render() {
     const { data, action } = this.props;
     var rows = data.map(row => {

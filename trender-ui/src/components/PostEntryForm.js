@@ -17,10 +17,7 @@ class PostEntryForm extends Component {
   }
 
   onChangeHandler = (e) => {
-//    e.target.name == "createdAt" ?
-//    this.setState({ [e.target.name]: (e.target.value) }) :
     this.setState({ [e.target.name]: e.target.value });
-    console.log('E.TARGET.NAME', this.state);
   }
 
   onDayChangeHandler = (day) => {
