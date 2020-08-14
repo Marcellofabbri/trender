@@ -13,8 +13,7 @@ class Body extends Component {
     this.state = {
         isLoaded: false,
         items: [],
-        reload: false,
-        chartData: {}
+        reload: false
       };
   }
 
