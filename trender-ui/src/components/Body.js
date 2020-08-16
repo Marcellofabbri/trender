@@ -5,6 +5,8 @@ import MainChart from './MainChart.js';
 import TableData from './TableData.js';
 import Chart from 'chart.js';
 import axios from 'axios';
+import {retrieveData} from '../actions/retrieveData';
+import {connect} from 'react-redux';
 
 class Body extends Component {
   constructor(props) {
@@ -12,7 +14,7 @@ class Body extends Component {
     this.handler = this.handler.bind(this);
     this.state = {
         isLoaded: false,
-        items: [],
+        //items: [],
         reload: false
       };
   }
@@ -24,19 +26,22 @@ class Body extends Component {
   }
 
   componentDidMount() {
-    this.retrievedData();
+    this.props.retrieveData();
+    this.setState({
+      isLoaded: true
+    })
   }
 
   retrievedData = () => {
-    fetch('/api/measurement')
-      .then(results => results.json())
-      .then(json => {
-      console.log(json)
-        this.setState({
-          isLoaded: true,
-          items: json
-          });
-      });
+//    fetch('/api/measurement')
+//      .then(results => results.json())
+//      .then(json => {
+//      console.log(json)
+//        this.setState({
+//          isLoaded: true,
+//          items: json
+//          });
+//      });
   };
 
   onDeleteEntry = (id) => {
@@ -54,9 +59,10 @@ class Body extends Component {
 
 
   render() {
+  const { items } = this.props;
+  console.log('BODYS PROPS', items);
     let {
       isLoaded,
-      items,
       reload
       } = this.state;
 
@@ -69,8 +75,8 @@ class Body extends Component {
             <tbody>
               <tr>
                 <td>
-                  <MainChart data={ this.state.items } />
-                  <TableData data={ this.state.items } action={ this.onDeleteEntry }/>
+                  <MainChart data={ items } />
+                  <TableData data={ items } action={ this.onDeleteEntry } />
                 </td>
               </tr>
             </tbody>
@@ -82,4 +88,17 @@ class Body extends Component {
   }
 }
 
-export default Body;
+const mapStateToProps = (state, ownProps) => {
+  return {
+    items: state.items
+  }
+}
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    retrieveData: () => { dispatch(retrieveData()) }
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Body)
+

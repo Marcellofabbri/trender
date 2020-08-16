@@ -36,12 +36,18 @@ class MainChart extends Component {
     })
   }
 
-  componentWillMount() {
+  componentDidMount() {
     this.getChartData(this.props.data);
+    console.log('CHART PROPS', this.props)
+  }
+
+  componentWillReceiveProps(nextProps) {
+    this.getChartData(nextProps.data);
   }
 
   render() {
     const { data } = this.props;
+    console.log('CHART STATE', this.state)
       return (
         <section className="MainChart">
           <Bar
