@@ -20,7 +20,7 @@ On IntelliJ IDEA these can be easily set by clicking on the application's dropdo
 
 Also create a database with the same name as the DATABASE environment variable, and another database called *trendertest*. The migration files will do the rest.
 
-**BACKEND**: Java - Spring Boot
+**BACKEND**: Java - Spring Boot<br>
 install the Java SE Development Kit on the machine by following the instructions on the [official JDK website](https://www.oracle.com/uk/java/technologies/javase/javase-jdk8-downloads.html).
 
 On IntelliJ IDEA make sure maven refreshed the dependencies described on the *pom.xml* file, located on the top level of the backend directory.
@@ -31,8 +31,11 @@ The service can start on localhost from the command line by typing ```mvn spring
 
 The service is wired to start automatically on port 8081, but can run somewhere else by altering the first line on the *application.property* file
 
-**FRONTEND**: React+Redux
-```npm install``` to install all the dependencies.
-```npm start``` to start the app.
+**FRONTEND**: React+Redux<br>
+```npm install``` to install all the dependencies<br>
+```npm start``` to start the app<br>
 
 The frontend retrieves data from the Redux central store and uses Thunk for asynchronous retrieving of database data in action-creators.
+
+**DOCKER**<br>
+Both the backend and frontend folders have their dedicated dockerfile from which containers can be build and run. There is no orchestration at the moment but a docker-compose file could be easily put together.
