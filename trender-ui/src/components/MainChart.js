@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import {Bar, Line, Pie} from 'react-chartjs-2';
 import '../style/MainChart.css';
+import dateStraightener from '../helpers/dateStraightener';
 
 class MainChart extends Component {
   constructor({data}) {
@@ -13,7 +14,7 @@ class MainChart extends Component {
 
   getChartData(data) {
     let extrapolatedLabels = data.map(element => {
-      return element.createdAt});
+      return element.createdAt.substring(0,10) });
     let extrapolatedLabel = data[0].unit;
     let extrapolatedData = data.map(element => {
       return element.value});
@@ -38,7 +39,6 @@ class MainChart extends Component {
 
   componentDidMount() {
     this.getChartData(this.props.data);
-    console.log('CHART PROPS', this.props)
   }
 
   componentWillReceiveProps(nextProps) {
@@ -51,11 +51,11 @@ class MainChart extends Component {
       return (
         <section className="MainChart">
           <Bar
-            width = { 1000 }
-              height = { 500 }
+            width = { 800 }
+              height = { 400 }
               data = { this.state.chartData }
               options = {{
-                aspectRatio: 1.5,
+                aspectRatio: 1,
                 maintainAspectRatio: true,
                 responsive: true,
                 scales: {

@@ -15,9 +15,9 @@ public class MeasurementService {
     private MeasurementRepository measurementRepository;
 
     public MeasurementResponse createMeasurement(MeasurementRequestCreate request) {
-        Measurement newMeasurement = new Measurement(request.getCreatedAt(), request.getValue(), request.getUnit());
+        Measurement newMeasurement = new Measurement(request.getCreatedAt(), request.getValue(), request.getUnit(), request.getChartID());
         Measurement save = measurementRepository.save(newMeasurement);
-        MeasurementResponse response = new MeasurementResponse(save.getId(), save.getCreatedAt(), save.getValue(), save.getUnit());
+        MeasurementResponse response = new MeasurementResponse(save.getId(), save.getCreatedAt(), save.getValue(), save.getUnit(), save.getChartID());
         return response;
     }
 }

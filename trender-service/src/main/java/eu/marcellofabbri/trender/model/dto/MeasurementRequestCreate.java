@@ -15,14 +15,18 @@ public class MeasurementRequestCreate {
     private final long value;
     @NotBlank
     private final String unit;
+    @NotBlank
+    private final long chartID;
 
     @JsonCreator
     public MeasurementRequestCreate(@JsonProperty("createdAt") OffsetDateTime createdAt,
                                       @JsonProperty("value") long value,
-                                    @JsonProperty("unit") String unit) {
+                                    @JsonProperty("unit") String unit,
+                                    @JsonProperty("chartID") long chartID) {
         this.createdAt = createdAt;
         this.value = value;
         this.unit = unit;
+        this.chartID = chartID;
     }
 
     public OffsetDateTime getCreatedAt() {
@@ -36,4 +40,6 @@ public class MeasurementRequestCreate {
     public String getUnit() {
         return unit;
     }
+
+    public long getChartID() { return chartID; }
 }

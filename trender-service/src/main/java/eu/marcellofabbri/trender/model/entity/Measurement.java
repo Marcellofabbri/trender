@@ -21,13 +21,17 @@ public class Measurement implements Serializable {
     @Column (name = "unit")
     private String unit;
 
+    @Column (name = "chartID")
+    private long chartID;
+
     public Measurement() {
     }
 
-    public Measurement(OffsetDateTime createdAt, long value, String unit) {
+    public Measurement(OffsetDateTime createdAt, long value, String unit, long chartID) {
         this.createdAt = createdAt;
         this.value = value;
         this.unit = unit;
+        this.chartID = chartID;
     }
 
     public long getValue() {
@@ -57,4 +61,8 @@ public class Measurement implements Serializable {
     public Long getId() {
         return id;
     }
+
+    public void setChartID(Long chartID) { this.chartID = chartID; }
+
+    public long getChartID() { return chartID; }
 }

@@ -59,6 +59,7 @@ public class MeasurementController {
             savedMeasurement.setCreatedAt(measurement.getCreatedAt());
             savedMeasurement.setValue(measurement.getValue());
             savedMeasurement.setUnit(measurement.getUnit());
+            savedMeasurement.setChartID(measurement.getChartID());
 
             Measurement updatedMeasurement = measurementRepository.save(savedMeasurement);
             return new ResponseEntity<>(updatedMeasurement, HttpStatus.OK);

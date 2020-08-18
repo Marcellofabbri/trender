@@ -32,18 +32,6 @@ class Body extends Component {
     })
   }
 
-  retrievedData = () => {
-//    fetch('/api/measurement')
-//      .then(results => results.json())
-//      .then(json => {
-//      console.log(json)
-//        this.setState({
-//          isLoaded: true,
-//          items: json
-//          });
-//      });
-  };
-
   onDeleteEntry = (id) => {
     axios.delete(`/api/measurement/${id}`)
       .then(response => {
