@@ -43,7 +43,7 @@ public class TrenderApplicationTests {
 
     @org.junit.Test
     public void testGetMeasurementById() {
-        measurementRepository.save(new Measurement(TIMESTAMP, 20, "grams"));
+        measurementRepository.save(new Measurement(TIMESTAMP, 20, "grams", 1));
 
         ResponseEntity<MeasurementResponse> response = restTemplate.getForEntity("http://localhost:8082/measurements/1", MeasurementResponse.class);
         Assertions.assertThat(response.getStatusCode().is2xxSuccessful());
@@ -58,7 +58,7 @@ public class TrenderApplicationTests {
 
     @org.junit.Test
     public void testPostMeasurement() {
-        Measurement measurement = new Measurement(TIMESTAMP, 30, "milliliters");
+        Measurement measurement = new Measurement(TIMESTAMP, 30, "milliliters", 2);
         HttpEntity<Measurement> request = new HttpEntity<>(measurement);
         ResponseEntity<Measurement> response = restTemplate.exchange(
                 "http://localhost:8082/measurements",

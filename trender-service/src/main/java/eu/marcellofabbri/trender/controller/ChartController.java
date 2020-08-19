@@ -55,7 +55,7 @@ public class ChartController {
     }
   }
 
-  @PutMapping("/measurement/{id}")
+  @PutMapping("/charts/{id}")
   public ResponseEntity<Chart> updateChart(@PathVariable("id") Long id, @RequestBody Chart chart) {
 
     Optional<Chart> chartData = chartRepository.findById(id);

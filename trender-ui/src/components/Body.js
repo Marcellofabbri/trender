@@ -4,6 +4,7 @@ import '../style/Body.css';
 import MainChart from './MainChart.js';
 import TableData from './TableData.js';
 import Chart from 'chart.js';
+import ChartSheet from './ChartSheet.js'
 import axios from 'axios';
 import {retrieveData} from '../actions/retrieveData';
 import {connect} from 'react-redux';
@@ -48,7 +49,6 @@ class Body extends Component {
 
   render() {
   const { items } = this.props;
-  console.log('BODYS PROPS', items);
     let {
       isLoaded,
       reload
@@ -64,6 +64,13 @@ class Body extends Component {
               <tr>
                 <td>
                   <MainChart data={ items } />
+                </td>
+                <td>
+                  <ChartSheet />
+                </td>
+              </tr>
+              <tr>
+                <td>
                   <TableData data={ items } action={ this.onDeleteEntry } />
                 </td>
               </tr>

@@ -3,10 +3,14 @@ package eu.marcellofabbri.trender.model.entity;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.time.OffsetDateTime;
+import java.util.Set;
 
 @Entity
 @Table(name = "chart")
 public class Chart implements Serializable {
+
+  @OneToMany(mappedBy = "chart")
+  private Set<Measurement> measurements;
 
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -18,7 +22,7 @@ public class Chart implements Serializable {
   @Column (name = "title")
   private String title;
 
-  @Column (name = "unitName")
+  @Column (name = "unit")
   private String unitName;
 
   @Column (name = "description")
@@ -26,6 +30,8 @@ public class Chart implements Serializable {
 
   @Column (name = "target")
   private long target;
+
+  protected Chart() {}
 
   public Chart(OffsetDateTime createdAt, String title, String unitName, String description, long target) {
     this.createdAt = createdAt;

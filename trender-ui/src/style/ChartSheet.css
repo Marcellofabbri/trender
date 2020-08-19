@@ -1,0 +1,10 @@
+.ChartSheet {
+  background-color: #7D67CB;
+  height: 60vh;
+  width: 40vh;
+}
+
+.chartSheetElement {
+  margin-top: 2vh;
+  margin-bottom: 2vh;
+}

@@ -8,6 +8,10 @@ import java.time.OffsetDateTime;
 @Table(name = "measurement")
 public class Measurement implements Serializable {
 
+    @ManyToOne
+    @JoinColumn(name="chartID", nullable=false, insertable = false, updatable = false)
+    private Chart chart;
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;

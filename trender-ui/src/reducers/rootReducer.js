@@ -7,9 +7,6 @@ const initState = {
 const rootReducer = (state = initState, action) => {
   if (action.type == 'RETRIEVE_DATA') {
     let allItems = action.allItems;
-    console.log('CURRENT STATE', state)
-    console.log('ACTION.TYPE', action.type)
-    console.log('ACTION.ALLITEMS', action.allItems)
     return {
       items: allItems
     };
