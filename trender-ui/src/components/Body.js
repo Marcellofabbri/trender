@@ -7,6 +7,7 @@ import Chart from 'chart.js';
 import ChartSheet from './ChartSheet.js'
 import axios from 'axios';
 import {retrieveData} from '../actions/retrieveData';
+import {retrieveCharts} from '../actions/retrieveCharts';
 import {connect} from 'react-redux';
 
 class Body extends Component {
@@ -28,6 +29,7 @@ class Body extends Component {
 
   componentDidMount() {
     this.props.retrieveData();
+    this.props.retrieveCharts();
     this.setState({
       isLoaded: true
     })
@@ -46,9 +48,8 @@ class Body extends Component {
       });
   }
 
-
   render() {
-  const { items } = this.props;
+  const { items, charts } = this.props;
     let {
       isLoaded,
       reload
@@ -66,7 +67,7 @@ class Body extends Component {
                   <MainChart data={ items } />
                 </td>
                 <td>
-                  <ChartSheet />
+                  <ChartSheet data={ charts }/>
                 </td>
               </tr>
               <tr>
@@ -76,7 +77,6 @@ class Body extends Component {
               </tr>
             </tbody>
           </table>
-          <button onClick={ this.printState }>Add</button>
         </div>
       );
     }
@@ -85,13 +85,15 @@ class Body extends Component {
 
 const mapStateToProps = (state, ownProps) => {
   return {
-    items: state.items
+    items: state.items,
+    charts: state.charts
   }
 }
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    retrieveData: () => { dispatch(retrieveData()) }
+    retrieveData: () => { dispatch(retrieveData()) },
+    retrieveCharts: () => { dispatch(retrieveCharts()) }
   }
 }
 

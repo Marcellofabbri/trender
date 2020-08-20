@@ -5,12 +5,30 @@ const initState = {
 }
 
 const rootReducer = (state = initState, action) => {
-  if (action.type == 'RETRIEVE_DATA') {
-    let allItems = action.allItems;
-    return {
-      items: allItems
-    };
+  switch (action.type) {
+    case 'RETRIEVE_DATA':
+      let allItems = action.allItems;
+        return {
+          ...state,
+          items: allItems
+        };
+      break;
+    case 'RETRIEVE_CHARTS':
+      let allCharts = action.allCharts;
+        return {
+          ...state,
+          charts: allCharts
+        };
+      break;
   }
+
+//  if (action.type == 'RETRIEVE_DATA') {
+//    let allItems = action.allItems;
+//    return {
+//      items: allItems
+//    };
+//  }
+
   return state;
 }
 
