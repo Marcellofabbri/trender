@@ -38,7 +38,6 @@ class Body extends Component {
   onDeleteEntry = (id) => {
     axios.delete(`/api/measurement/${id}`)
       .then(response => {
-        console.log(response);
         if (response.status == 200) {
           this.retrievedData();
         }
@@ -67,7 +66,7 @@ class Body extends Component {
                   <MainChart data={ items } />
                 </td>
                 <td>
-                  <ChartSheet data={ charts }/>
+                  <ChartSheet charts={ charts }/>
                 </td>
               </tr>
               <tr>

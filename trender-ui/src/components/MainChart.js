@@ -47,7 +47,6 @@ class MainChart extends Component {
 
   render() {
     const { data } = this.props;
-    console.log('CHART STATE', this.state)
       return (
         <section className="MainChart">
           <Bar
