@@ -4,6 +4,8 @@ import '../style/ChartSheet.css';
 import '../style/AddNewChartForm.css';
 import Select from 'react-select';
 import AsyncSelect from 'react-select/async';
+import {connect} from 'react-redux';
+import {selectChart} from '../actions/selectChart';
 
 class ChartSheet extends Component {
   constructor(props) {
@@ -68,15 +70,15 @@ class ChartSheet extends Component {
 
   selectOneChart = (e) => {
     let selectedChartId = e.value;
+    this.props.selectChart(selectedChartId);
     this.setState({
       selectedChartId: selectedChartId,
     })
     let array = this.props.charts.filter(chart => chart.id == e.value );
     const selectedChart = array[0];
-    console.log('SELECTEDCHART', array)
     this.setState({
       selectedChart: selectedChart
-    })
+    });
   }
 
   render() {
@@ -107,4 +109,17 @@ class ChartSheet extends Component {
   }
 }
 
-export default ChartSheet;
+const mapStateToProps = (state, ownProps) => {
+  return {
+    selectChartId: state.selectedChartId
+  }
+}
+
+const mapDispatchToProps = (dispatch) => {
+  console.log('dispatchment')
+  return {
+    selectChart: (id) => { dispatch(selectChart(id)) }
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(ChartSheet);

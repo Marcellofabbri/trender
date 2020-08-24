@@ -47,8 +47,13 @@ class Body extends Component {
       });
   }
 
+  filterBySelectedId = (id) => {
+    console.log('FILTERBYSELECTEDID', this.props)
+  }
+
   render() {
-  const { items, charts } = this.props;
+  this.filterBySelectedId(0);
+  const { items, charts, selectedChartId } = this.props;
     let {
       isLoaded,
       reload
@@ -85,7 +90,8 @@ class Body extends Component {
 const mapStateToProps = (state, ownProps) => {
   return {
     items: state.items,
-    charts: state.charts
+    charts: state.charts,
+    selectedChartId: state.selectedChartId
   }
 }
 

@@ -66,6 +66,14 @@ public class Measurement implements Serializable {
         return id;
     }
 
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public void setChartID(long chartID) {
+        this.chartID = chartID;
+    }
+
     public void setChartID(Long chartID) { this.chartID = chartID; }
 
     public long getChartID() { return chartID; }
