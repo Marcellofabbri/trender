@@ -93,21 +93,23 @@ public class TrenderApplicationTests {
     }
 
     @org.junit.Test
-    public void testGetMeasurementsWhereChartIDisChartID() throws IOException {
+    public void testGetMeasurementsWhereChartIDisChartID() throws JsonProcessingException {
         //create two measurements for chart "Steps taken (id=3)" and one for chart "Daily protein intakes (id=2)"
         Measurement measurement1 = new Measurement(TIMESTAMP, 5000, "steps", 3);
         Measurement measurement2 = new Measurement(TIMESTAMP.plusDays(1), 6000, "steps", 3);
         Measurement measurement3 = new Measurement(TIMESTAMP.plusDays(2), 50, "grams", 2);
+        measurementRepository.save(measurement1);
+        measurementRepository.save(measurement2);
+        measurementRepository.save(measurement3);
         //assert the method retrieves only the ones from chart "Steps taken" (id=3)
 
-        ResponseEntity<JSONString> response = restTemplate.getForEntity("http://localhost:8082/measurements?chartid=3", JSONString.class);
+        ResponseEntity<MeasurementResponse[]> response = restTemplate.getForEntity("http://localhost:8082/api/measurement?chartID=3", MeasurementResponse[].class);
         Assertions.assertThat(response.getStatusCode().is2xxSuccessful());
 
-        ObjectMapper objectMapper = new ObjectMapper();
-        JSONString body = response.getBody();
+        MeasurementResponse[] body = response.getBody();
 
-        MeasurementResponse[] array = objectMapper.readValue((JsonParser) body, MeasurementResponse[].class);
-
-        Assertions.assertThat(array[0].getChartID()).isEqualTo(3);
+        Assertions.assertThat(body[0].getChartID()).isEqualTo(3);
+        Assertions.assertThat(body[1].getChartID()).isEqualTo(3);
+        Assertions.assertThat(body.length).isEqualTo(2);
     }
 }
