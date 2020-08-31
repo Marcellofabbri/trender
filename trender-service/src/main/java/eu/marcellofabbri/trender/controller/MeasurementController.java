@@ -8,6 +8,7 @@ import eu.marcellofabbri.trender.service.MeasurementService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.query.Param;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -28,8 +29,6 @@ public class MeasurementController {
 
     @GetMapping("/measurement")
     public List<Measurement> getAllMeasurements(@RequestParam(required = false) Long chartID) {
-
-        System.out.println(chartID);
 
         List<Measurement> list = new ArrayList<>();
         Iterable<Measurement> trackers = chartID == null ? measurementRepository.findAll() : measurementRepository.findByChartID(chartID);
@@ -52,14 +51,6 @@ public class MeasurementController {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
     }
-
-//    @GetMapping("/measurement")
-//    public List<Measurement> getMeasurementsByChart(@RequestParam("chartid") long chartID) {
-//        List<Measurement> list = new ArrayList<>();
-//        Iterable<Measurement> trackers = measurementRepository.findByChartID(chartID);
-//        trackers.forEach(list::add);
-//        return list;
-//    }
 
     @PutMapping("/measurement/{id}")
     public ResponseEntity<Measurement> updateMeasurement(@PathVariable("id") Long id, @RequestBody Measurement measurement) {

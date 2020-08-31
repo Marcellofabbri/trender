@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import {Bar, Line, Pie} from 'react-chartjs-2';
 import '../style/MainChart.css';
 import dateStraightener from '../helpers/dateStraightener';
+import epochToDate from '../helpers/epochToDate';
 
 class MainChart extends Component {
   constructor({data}) {
@@ -14,7 +15,8 @@ class MainChart extends Component {
 
   getChartData(data) {
     let extrapolatedLabels = data.map(element => {
-      return element.createdAt.substring(0,10) });
+      return epochToDate(element.createdAt) });
+    console.log('EXTRAPOLATEDLABELS', extrapolatedLabels)
     let extrapolatedLabel = data[0].unit;
     let extrapolatedData = data.map(element => {
       return element.value});
@@ -42,7 +44,7 @@ class MainChart extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    this.getChartData(nextProps.data);
+      this.getChartData(nextProps.data)
   }
 
   render() {

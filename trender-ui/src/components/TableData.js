@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import axios from 'axios';
 import '../style/TableData.css';
 import PostEntryForm from './PostEntryForm';
+import epochToDate from '../helpers/epochToDate';
 
 class TableData extends Component {
   state = {
@@ -26,7 +27,7 @@ class TableData extends Component {
       var rowId = row.id;
       return(
         <tr className="row" key={ row.id }>
-          <td>{ timestampStringConverter(row.createdAt) }</td>
+          <td>{ epochToDate(row.createdAt) }</td>
           <td>{ row.value }</td>
           <td>{ row.unit }</td>
           <td><button

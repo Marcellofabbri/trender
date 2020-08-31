@@ -1,6 +1,6 @@
 const initState = {
   items: [
-    { id: 100, createdAt: '20/08/20', value: 135, unit: 'grams'}
+    { id: 100, createdAt: '1588900820', value: 135, unit: 'grams'}
   ],
   charts: [
     { id: 0, createdAt: '2020-01-01T00:00:00', title: '', unit: '', description: '', target: 0 }

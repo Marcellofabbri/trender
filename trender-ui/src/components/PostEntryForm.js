@@ -5,6 +5,7 @@ import dateFnsParse from 'date-fns/parse';
 import { DateUtils } from 'react-day-picker';
 import DayPickerInput from 'react-day-picker/DayPickerInput';
 import 'react-day-picker/lib/style.css';
+import {connect} from 'react-redux';
 
 class PostEntryForm extends Component {
   constructor(props) {
@@ -12,7 +13,8 @@ class PostEntryForm extends Component {
     this.state = {
       createdAt: '',
       value: '',
-      unit: ''
+      unit: '',
+      chartID: this.props
     }
   }
 
@@ -25,8 +27,14 @@ class PostEntryForm extends Component {
   }
 
   onSubmitHandler = e => {
-    //e.preventDefault();
-    axios.post('/api/measurement', this.state)
+    let chosenDate = (this.state.createdAt).toJSON();
+    let payload = {
+      createdAt: chosenDate,
+      value: this.state.value,
+      unit: this.state.unit,
+      chartID: this.props.chartID
+    }
+    axios.post('/api/measurement', payload)
       .then(response => {
         console.log(response)
       })
@@ -64,7 +72,13 @@ class PostEntryForm extends Component {
   }
 }
 
-export default PostEntryForm;
+const mapStateToProps = (state, ownProps) => {
+  return {
+    chartID: state.selectedChartId
+  }
+}
+
+export default connect(mapStateToProps, null)(PostEntryForm)
 
 function parseDate(str, format, locale) {
   const parsed = dateFnsParse(str, format, new Date(), { locale });

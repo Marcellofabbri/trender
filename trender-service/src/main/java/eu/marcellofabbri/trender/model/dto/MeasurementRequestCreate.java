@@ -15,7 +15,7 @@ public class MeasurementRequestCreate {
     private final long value;
     @NotBlank
     private final String unit;
-    @NotBlank
+    @NotNull
     private final long chartID;
 
     @JsonCreator
