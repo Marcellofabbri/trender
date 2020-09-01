@@ -23,42 +23,48 @@ class TableData extends Component {
 
   render() {
     const { data, action } = this.props;
-    var rows = data.map(row => {
-      var rowId = row.id;
+    if (typeof data == 'undefined') {
       return(
-        <tr className="row" key={ row.id }>
-          <td>{ epochToDate(row.createdAt) }</td>
-          <td>{ row.value }</td>
-          <td>{ row.unit }</td>
-          <td><button
-            id="minus"
-            name={ row.id }
-            onClick={ () => action(rowId) }
-            >
-            ꟷ
-            </button>
-            </td>
-       </tr>
-        )
-      })
-      return(
-        <div className="TableData">
-          <table>
-            <thead>
-              <tr>
-                <th>Timestamp</th>
-                <th>Value</th>
-                <th>Unit</th>
-                <th><button id="plus" onClick={ this.state.showForm ? this.hideForm : this.revealForm }>{ this.state.showForm ? "×" : "+"}</button></th>
-              </tr>
-              { this.state.showForm ? <PostEntryForm /> : null }
-            </thead>
-            <tbody>
-              { rows }
-            </tbody>
-          </table>
-        </div>
+        <div>Select chart</div>
       )
+    } else {
+      var rows = data.map(row => {
+        var rowId = row.id;
+        return(
+          <tr className="row" key={ row.id }>
+            <td>{ epochToDate(row.createdAt) }</td>
+            <td>{ row.value }</td>
+            <td>{ row.unit }</td>
+            <td><button
+              id="minus"
+              name={ row.id }
+              onClick={ () => action(rowId) }
+              >
+              ꟷ
+              </button>
+              </td>
+         </tr>
+          )
+        })
+        return(
+          <div className="TableData">
+            <table>
+              <thead>
+                <tr>
+                  <th>Timestamp</th>
+                  <th>Value</th>
+                  <th>Unit</th>
+                  <th><button id="plus" onClick={ this.state.showForm ? this.hideForm : this.revealForm }>{ this.state.showForm ? "×" : "+"}</button></th>
+                </tr>
+                { this.state.showForm ? <PostEntryForm /> : null }
+              </thead>
+              <tbody>
+                { rows }
+              </tbody>
+            </table>
+          </div>
+        )
+      }
   }
 }
 

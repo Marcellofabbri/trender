@@ -26,14 +26,12 @@ const rootReducer = (state = initState, action) => {
       break;
     case 'SELECT_CHART':
       let selectedChartId = action.selectedChartId;
-      console.log('REDUCER', action.selectedChartId)
         return {
           ...state,
           selectedChartId: selectedChartId
         };
       break;
   }
-  console.log('STATE',state)
   return state;
 }
 

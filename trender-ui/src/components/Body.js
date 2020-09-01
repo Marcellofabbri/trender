@@ -82,7 +82,11 @@ class Body extends Component {
               </tr>
               <tr>
                 <td>
-                  <TableData data={ items } action={ this.onDeleteEntry } />
+                  {
+                  filteredItems.length > 0 ?
+                  <TableData data={ items } action={ this.onDeleteEntry } /> :
+                  <TableData className="NoTableData"/>
+                  }
                 </td>
               </tr>
             </tbody>
