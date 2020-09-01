@@ -5,18 +5,18 @@ import dateStraightener from '../helpers/dateStraightener';
 import epochToDate from '../helpers/epochToDate';
 
 class MainChart extends Component {
-  constructor({data}) {
-    super({data});
+  constructor(props) {
+    super(props);
     this.state = {
       chartData: {
-      }
+      },
+      selectedChartId: props.selectedChartId
     }
   }
 
   getChartData(data) {
     let extrapolatedLabels = data.map(element => {
       return epochToDate(element.createdAt) });
-    console.log('EXTRAPOLATEDLABELS', extrapolatedLabels)
     let extrapolatedLabel = data[0].unit;
     let extrapolatedData = data.map(element => {
       return element.value});
@@ -40,6 +40,7 @@ class MainChart extends Component {
   }
 
   componentDidMount() {
+    console.log('PROPS DATA SENT TO MAINCHART', this.props)
     this.getChartData(this.props.data);
   }
 
@@ -48,7 +49,7 @@ class MainChart extends Component {
   }
 
   render() {
-    const { data } = this.props;
+    const { data, selectedChartId } = this.props;
       return (
         <section className="MainChart">
           <Bar

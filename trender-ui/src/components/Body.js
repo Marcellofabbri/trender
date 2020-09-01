@@ -47,13 +47,15 @@ class Body extends Component {
       });
   }
 
-  filterBySelectedId = (id) => {
-    console.log('FILTERBYSELECTEDID', this.props)
+  filterBySelectedId = (items, id) => {
+    console.log('FILTERBYSELECTEDID', this.props);
+    let filteredItems = items.filter(item => item.chartID == id)
+    return filteredItems;
   }
 
   render() {
-  this.filterBySelectedId(0);
   const { items, charts, selectedChartId } = this.props;
+  const filteredItems = this.filterBySelectedId(items, selectedChartId);
     let {
       isLoaded,
       reload
@@ -68,7 +70,11 @@ class Body extends Component {
             <tbody>
               <tr>
                 <td>
-                  <MainChart data={ items } />
+                  {
+                    filteredItems.length > 0 ?
+                    <MainChart data={ filteredItems } selectedChartId={ selectedChartId } /> :
+                    <div className="NoChart">SELECT A CHART FROM THE PANEL</div>
+                  }
                 </td>
                 <td>
                   <ChartSheet charts={ charts }/>

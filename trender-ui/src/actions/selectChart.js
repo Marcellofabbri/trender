@@ -6,5 +6,8 @@ const selectChartAction = (id) => {
 }
 
 export const selectChart = (id) => {
-  return (dispatch) => { dispatch(selectChartAction(id)) };
+  console.log(selectChartAction(id))
+  return (dispatch) => {
+    dispatch(selectChartAction(id))
+  };
 }

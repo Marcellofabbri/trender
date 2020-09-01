@@ -9,7 +9,7 @@ const retrieveDataAction = (json) => {
 
 export const retrieveData = () => {
   return (dispatch) => {
-    fetch('/api/measurement')
+    fetch("api/measurement/")
       .then(results => results.json())
       .then((json) => { dispatch(retrieveDataAction(json));
       })

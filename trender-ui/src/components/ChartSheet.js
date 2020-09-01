@@ -116,7 +116,6 @@ const mapStateToProps = (state, ownProps) => {
 }
 
 const mapDispatchToProps = (dispatch) => {
-  console.log('dispatchment')
   return {
     selectChart: (id) => { dispatch(selectChart(id)) }
   }
