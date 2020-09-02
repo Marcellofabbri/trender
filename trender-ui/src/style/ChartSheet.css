@@ -4,7 +4,68 @@
   width: 40vh;
 }
 
+#goToAddChartForm {
+  border-radius: 20px;
+}
+
 .chartSheetElement {
-  margin-top: 2vh;
-  margin-bottom: 2vh;
+  width: 100%;
+  height: 48px;
+  font-weight: 400;
+  text-align: center;
+  line-height: 48px;
+}
+
+#chartSelectionBox {
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+tr.chartSpecsRow {
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+
+table#chartsTable {
+  table-layout: fixed;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.chartSheetColumnLeft {
+  width: 20%;
+  background-color: #A091D8;
+}
+
+.chartSheetColumnRight {
+  width: 80%;
+  background-color: #A091D8;
+}
+
+table#descriptionTable {
+  table-layout: fixed;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#lastDiv {
+  width: 99%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#descriptionField {
+  font-weight: 400;
+  background-color: #A091D8;
+  text-align: start;
+  padding: 2px;
+  word-wrap: anywhere;
+  overflow-x: hidden;
+  overflow-y: auto;
+  height: 188px;
+}
+
+.chartSheetColumnLast {
+  background-color: #A091D8;
 }

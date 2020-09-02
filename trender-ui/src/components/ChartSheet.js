@@ -93,16 +93,32 @@ class ChartSheet extends Component {
       return(
         <div className='ChartSheet'>
           <AddNewChartForm />
-          <button id='addChart' onClick={ this.revealForm }>NEW CHART</button>
+          <button id="goToAddChartForm" onClick={ this.revealForm }>NEW CHART</button>
           { this.state.chartsInDatabase.length ?
             <Select options={this.state.chartsInDatabase} onChange={this.selectOneChart} /> :
             null
           }
-          <Select options={this.state.options} onChange={this.selectOneChart.bind(this)} />
-          <div className='chartSheetElement' id='title'>{selectedChart.title}</div>
-          <div className='chartSheetElement' id='unitName'>{selectedChart.unitName}</div>
-          <div className='chartSheetElement' id='target'>{selectedChart.target}</div>
-          <div className='chartSheetElement' id='description'>{selectedChart.description}</div>
+          <Select id="chartSelectionBox" options={this.state.options} onChange={this.selectOneChart.bind(this)} />
+          <table id="chartsTable">
+              <tr className="chartSpecsRow">
+                <th className="chartSheetColumnLeft">CHART</th>
+                <th className="chartSheetColumnRight"><div className='chartSheetElement' id='title'>{selectedChart.title}</div></th>
+              </tr>
+              <tr className="chartSpecsRow">
+                <th className="chartSheetColumnLeft">UNIT</th>
+                <th className="chartSheetColumnRight"><div className='chartSheetElement' id='unitName'>{selectedChart.unitName}</div></th>
+              </tr>
+              <tr className="chartSpecsRow">
+                <th className="chartSheetColumnLeft">TARGET</th>
+                <th className="chartSheetColumnRight"><div className='chartSheetElement' id='target'>{selectedChart.target}</div></th>
+              </tr>
+              <tr className="chartSpecsRow">
+                <th className="chartSheetColumnLast">DESCRIPTION</th>
+              </tr>
+          </table>
+          <div id="lastDiv">
+            <div id='descriptionField'>{selectedChart.description}</div>
+          </div>
         </div>
       )
     }

@@ -32,10 +32,10 @@ class TableData extends Component {
         var rowId = row.id;
         return(
           <tr className="row" key={ row.id }>
-            <td>{ epochToDate(row.createdAt) }</td>
-            <td>{ row.value }</td>
-            <td>{ row.unit }</td>
-            <td><button
+            <td className="cell">{ epochToDate(row.createdAt) }</td>
+            <td className="cell">{ row.value }</td>
+            <td className="cell">{ row.unit }</td>
+            <td className="buttonCell"><button
               id="minus"
               name={ row.id }
               onClick={ () => action(rowId) }
@@ -48,15 +48,15 @@ class TableData extends Component {
         })
         return(
           <div className="TableData">
-            <table>
+            { this.state.showForm ? <PostEntryForm className="postEntryForm" unit={ unit }/> : null }
+            <table className="tabledata">
               <thead>
                 <tr>
-                  <th>Timestamp</th>
-                  <th>Value</th>
-                  <th>Unit</th>
-                  <th><button id="plus" onClick={ this.state.showForm ? this.hideForm : this.revealForm }>{ this.state.showForm ? "×" : "+"}</button></th>
+                  <th className="cell">Timestamp</th>
+                  <th className="cell">Value</th>
+                  <th className="cell">Unit</th>
+                  <th className="buttonCell"><button id="plus" onClick={ this.state.showForm ? this.hideForm : this.revealForm }>{ this.state.showForm ? "×" : "+"}</button></th>
                 </tr>
-                { this.state.showForm ? <PostEntryForm unit={ unit }/> : null }
               </thead>
               <tbody>
                 { rows }

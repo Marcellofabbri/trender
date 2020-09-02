@@ -9,3 +9,44 @@
   background-color: #C383AF; /* Fallback color */
   background-color: #C383AF; /* Black w/ opacity */
 }
+
+.addChartSheetColumnLeft {
+  width: 20%;
+  background-color: #E1B1D2;
+}
+
+.addChartSheetColumnRight {
+  width: 80%;
+  background-color: #E1B1D2;
+}
+
+.newChartInput {
+  width: 95%;
+  height: 48px;
+  font-weight: 400;
+  text-align: center;
+  line-height: 48px;
+}
+
+#addChartLastDiv {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.descriptionInput {
+  font-weight: 400;
+  text-align: start;
+  padding: 2px;
+  height: 201px;
+  width: 96%;
+  resize: none;
+}
+
+#addNewChart {
+  border-radius: 20px;
+}
+
+#backToChartSheet {
+  border-radius: 20px;
+  width: 40px;
+}

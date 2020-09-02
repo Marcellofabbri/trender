@@ -1,9 +1,5 @@
 .TableData {
-  background-color: #AEF1FF;
-}
-
-.row:hover {
-  background-color: red;
+  background-color: #AED4FF;
 }
 
 .row {
@@ -24,6 +20,26 @@
 
 #send {
   width: 40px;
-  font-weight: bold;
+  height: 22px;
   color: green;
+}
+
+#send:hover {
+  background-color: green;
+  color: white;
+}
+
+table.tabledata {
+  table-layout: fixed;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.row:hover .cell {
+  background-color: #DEDAF7 !important;
+}
+
+.cell {
+  width: 163px !important;
+  background-color: #AEBFFF;
 }

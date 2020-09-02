@@ -6,6 +6,7 @@ import { DateUtils } from 'react-day-picker';
 import DayPickerInput from 'react-day-picker/DayPickerInput';
 import 'react-day-picker/lib/style.css';
 import {connect} from 'react-redux';
+import '../style/PostEntryForm.css';
 
 class PostEntryForm extends Component {
   constructor(props) {
@@ -44,27 +45,26 @@ class PostEntryForm extends Component {
   }
 
   render() {
-    console.log('PROPS POSTENTRYFORM', this.props)
     const { createdAt, value, unit } = this.state;
     return(
       <div className="PostEntryForm">
         <form onSubmit={ this.onSubmitHandler }>
-          <table>
+          <table className="formRow">
             <tr>
-              <td>
+              <td className="cell">
                 <DayPickerInput
                 type="text"
                 name="createdAt"
                 value={ createdAt }
                 onDayChange={ this.onDayChangeHandler }
-                placeholder="Insert date"
+                placeholder="Pick a date"
                 format='dd/MM/yyyy'
                 formatDate={ formatDate }
                 />
               </td>
-              <td><input type="text" name="value" value={ value } onChange={ this.onChangeHandler }/></td>
-              <td><input type="text" name="unit" value={ unit }/></td>
-              <td><button type="submit">→</button></td>
+              <td className="cell"><input className="newRecordInput" type="text" name="value" value={ value } onChange={ this.onChangeHandler }/></td>
+              <td className="cell"><input className="newRecordInput" type="text" name="unit" value={ unit }/></td>
+              <td className="cellButton"><button type="submit" id="send">►</button></td>
             </tr>
         </table>
         </form>

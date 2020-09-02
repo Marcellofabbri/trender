@@ -20,11 +20,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d0c10668-9459-466f-8e53-748e2eedcc4d" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/trender-ui/src/style/PostEntryForm.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/trender-ui/src/components/Body.js" beforeDir="false" afterPath="$PROJECT_DIR$/trender-ui/src/components/Body.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/trender-ui/src/components/MainChart.js" beforeDir="false" afterPath="$PROJECT_DIR$/trender-ui/src/components/MainChart.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/trender-ui/src/components/AddNewChartForm.js" beforeDir="false" afterPath="$PROJECT_DIR$/trender-ui/src/components/AddNewChartForm.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/trender-ui/src/components/ChartSheet.js" beforeDir="false" afterPath="$PROJECT_DIR$/trender-ui/src/components/ChartSheet.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/trender-ui/src/components/PostEntryForm.js" beforeDir="false" afterPath="$PROJECT_DIR$/trender-ui/src/components/PostEntryForm.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/trender-ui/src/components/TableData.js" beforeDir="false" afterPath="$PROJECT_DIR$/trender-ui/src/components/TableData.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/trender-ui/src/style/AddNewChartForm.css" beforeDir="false" afterPath="$PROJECT_DIR$/trender-ui/src/style/AddNewChartForm.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/trender-ui/src/style/ChartSheet.css" beforeDir="false" afterPath="$PROJECT_DIR$/trender-ui/src/style/ChartSheet.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/trender-ui/src/style/TableData.css" beforeDir="false" afterPath="$PROJECT_DIR$/trender-ui/src/style/TableData.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -295,9 +299,9 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="425" y="187" key="run.anything.popup/0.0.1536.824@0.0.1536.824" timestamp="1597511440050" />
-    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup" timestamp="1597956431795">
+    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup" timestamp="1599071941251">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup/0.0.1536.824@0.0.1536.824" timestamp="1597956431795" />
+    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup/0.0.1536.824@0.0.1536.824" timestamp="1599071941251" />
   </component>
 </project>
