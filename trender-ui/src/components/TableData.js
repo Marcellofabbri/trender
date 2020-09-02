@@ -22,7 +22,7 @@ class TableData extends Component {
   }
 
   render() {
-    const { data, action } = this.props;
+    const { data, action, unit } = this.props;
     if (typeof data == 'undefined') {
       return(
         <div>Select chart</div>
@@ -56,7 +56,7 @@ class TableData extends Component {
                   <th>Unit</th>
                   <th><button id="plus" onClick={ this.state.showForm ? this.hideForm : this.revealForm }>{ this.state.showForm ? "×" : "+"}</button></th>
                 </tr>
-                { this.state.showForm ? <PostEntryForm /> : null }
+                { this.state.showForm ? <PostEntryForm unit={ unit }/> : null }
               </thead>
               <tbody>
                 { rows }

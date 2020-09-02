@@ -40,7 +40,6 @@ class MainChart extends Component {
   }
 
   componentDidMount() {
-    console.log('PROPS DATA SENT TO MAINCHART', this.props)
     this.getChartData(this.props.data);
   }
 

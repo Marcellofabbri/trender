@@ -54,8 +54,11 @@ class Body extends Component {
   }
 
   render() {
-  const { items, charts, selectedChartId } = this.props;
-  const filteredItems = this.filterBySelectedId(items, selectedChartId);
+  const { items, charts, selectedChartId, selectedChartUnit } = this.props;
+  const sortedItems = items.sort((a, b) => a.createdAt > b.createdAt ? 1 : -1);
+  const reversedItems = items.sort((a, b) => a.createdAt < b.createdAt ? 1 : -1);
+  const filteredItems = this.filterBySelectedId(sortedItems, selectedChartId);
+  const unit = filteredItems.length > 0 ? filteredItems[0].unit : '';
     let {
       isLoaded,
       reload
@@ -84,7 +87,7 @@ class Body extends Component {
                 <td>
                   {
                   filteredItems.length > 0 ?
-                  <TableData data={ items } action={ this.onDeleteEntry } /> :
+                  <TableData data={ reversedItems } action={ this.onDeleteEntry } unit={ unit } /> :
                   <TableData className="NoTableData"/>
                   }
                 </td>

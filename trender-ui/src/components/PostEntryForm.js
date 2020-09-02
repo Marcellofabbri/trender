@@ -13,8 +13,8 @@ class PostEntryForm extends Component {
     this.state = {
       createdAt: '',
       value: '',
-      unit: '',
-      chartID: this.props
+      unit: this.props.unit,
+      chartID: this.props.chartID
     }
   }
 
@@ -44,6 +44,7 @@ class PostEntryForm extends Component {
   }
 
   render() {
+    console.log('PROPS POSTENTRYFORM', this.props)
     const { createdAt, value, unit } = this.state;
     return(
       <div className="PostEntryForm">
@@ -62,7 +63,7 @@ class PostEntryForm extends Component {
                 />
               </td>
               <td><input type="text" name="value" value={ value } onChange={ this.onChangeHandler }/></td>
-              <td><input type="text" name="unit" value={ unit } onChange={ this.onChangeHandler }/></td>
+              <td><input type="text" name="unit" value={ unit }/></td>
               <td><button type="submit">→</button></td>
             </tr>
         </table>
