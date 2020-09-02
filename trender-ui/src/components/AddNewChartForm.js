@@ -10,10 +10,11 @@ class AddNewChartForm extends Component {
   }
 
   render() {
+    const { hideForm } = this.props;
     return(
       <div className="AddNewChartForm" id="AddNewChartForm">
         <div class="modal-content">
-          <button id="backToChartSheet">◄</button>
+          <button id="backToChartSheet" onClick={ hideForm }>◄</button>
           <button id="addNewChart">ADD NEW CHART</button>
           <form>
             <table id="chartsTable">

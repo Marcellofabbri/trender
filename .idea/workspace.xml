@@ -20,15 +20,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d0c10668-9459-466f-8e53-748e2eedcc4d" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/trender-ui/src/style/PostEntryForm.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/trender-ui/src/components/AddNewChartForm.js" beforeDir="false" afterPath="$PROJECT_DIR$/trender-ui/src/components/AddNewChartForm.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/trender-ui/src/components/ChartSheet.js" beforeDir="false" afterPath="$PROJECT_DIR$/trender-ui/src/components/ChartSheet.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/trender-ui/src/components/PostEntryForm.js" beforeDir="false" afterPath="$PROJECT_DIR$/trender-ui/src/components/PostEntryForm.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/trender-ui/src/components/TableData.js" beforeDir="false" afterPath="$PROJECT_DIR$/trender-ui/src/components/TableData.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/trender-ui/src/style/AddNewChartForm.css" beforeDir="false" afterPath="$PROJECT_DIR$/trender-ui/src/style/AddNewChartForm.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/trender-ui/src/style/ChartSheet.css" beforeDir="false" afterPath="$PROJECT_DIR$/trender-ui/src/style/ChartSheet.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/trender-ui/src/style/TableData.css" beforeDir="false" afterPath="$PROJECT_DIR$/trender-ui/src/style/TableData.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

@@ -92,7 +92,7 @@ class ChartSheet extends Component {
       let selectedChart = this.state.selectedChart;
       return(
         <div className='ChartSheet'>
-          <AddNewChartForm />
+          <AddNewChartForm hideForm={ this.hideForm }/>
           <button id="goToAddChartForm" onClick={ this.revealForm }>NEW CHART</button>
           { this.state.chartsInDatabase.length ?
             <Select options={this.state.chartsInDatabase} onChange={this.selectOneChart} /> :
