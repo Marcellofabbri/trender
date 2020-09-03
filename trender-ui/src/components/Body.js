@@ -17,7 +17,8 @@ class Body extends Component {
     this.state = {
         isLoaded: false,
         //items: [],
-        reload: false
+        reload: false,
+        selectedChartTarget: 0
       };
   }
 
@@ -32,6 +33,17 @@ class Body extends Component {
     this.props.retrieveCharts();
     this.setState({
       isLoaded: true
+    })
+  }
+
+  componentWillReceiveProps(nextProps) {
+    console.log('NEXTPROPS', nextProps)
+    const charts = nextProps.charts;
+    const selectedChartId = nextProps.selectedChartId;
+    const chosenCharts = charts.filter(chart => chart.id == selectedChartId);
+    const target = chosenCharts.length > 0 ? chosenCharts[0].target : '0';
+    this.setState({
+      selectedChartTarget: target
     })
   }
 
@@ -59,6 +71,7 @@ class Body extends Component {
   const reversedItems = items.sort((a, b) => a.createdAt < b.createdAt ? 1 : -1);
   const filteredItems = this.filterBySelectedId(sortedItems, selectedChartId);
   const unit = filteredItems.length > 0 ? filteredItems[0].unit : '';
+  const selectedChart = charts.length > 0 ? (charts.filter(chart => chart.id == selectedChartId))[0] : '';
     let {
       isLoaded,
       reload
@@ -75,7 +88,7 @@ class Body extends Component {
                 <td>
                   {
                     filteredItems.length > 0 ?
-                    <MainChart data={ filteredItems } selectedChartId={ selectedChartId } /> :
+                    <MainChart data={ filteredItems } selectedChartId={ selectedChartId } target={ this.state.selectedChartTarget } /> :
                     <div className="NoChart">SELECT A CHART FROM THE PANEL</div>
                   }
                 </td>

@@ -35,7 +35,7 @@ class AddNewChartForm extends Component {
               </tr>
             </table>
             <div id="addChartlastDiv">
-              <input type="text" placeholder="Description" className='descriptionInput'/>
+              <textArea type="text" placeholder="DESCRIPTION" className='descriptionInput'/>
             </div>
           </form>
         </div>

@@ -34,12 +34,14 @@
 }
 
 .descriptionInput {
+  background-color: #FFF0FA;
   font-weight: 400;
   text-align: start;
-  padding: 2px;
-  height: 201px;
-  width: 96%;
+  padding: 4px;
+  height: 195px;
+  width: 95%;
   resize: none;
+  font-family: Arial;
 }
 
 #addNewChart {
