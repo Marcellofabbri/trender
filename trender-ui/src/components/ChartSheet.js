@@ -6,6 +6,7 @@ import Select from 'react-select';
 import AsyncSelect from 'react-select/async';
 import {connect} from 'react-redux';
 import {selectChart} from '../actions/selectChart';
+import axios from 'axios';
 
 class ChartSheet extends Component {
   constructor(props) {
@@ -115,6 +116,16 @@ class ChartSheet extends Component {
     window.location.reload(false);
   }
 
+  deleteChart = (id) => {
+
+    axios.delete(`/api/charts/${id}`)
+      .then(response => console.log(response))
+      .catch((err) => {
+        console.log('ERROR WHEN DELETING CHARTS FROM DATABASE', err)
+      });
+    this.refreshPage();
+  }
+
   render() {
   console.log(this.state.edit);
     if (this.state.loaded == false) {
@@ -125,6 +136,7 @@ class ChartSheet extends Component {
       )
     } else {
       let selectedChart = this.state.selectedChart;
+      let selectedChartId = this.state.selectedChartId;
       return(
         <div className='ChartSheet'>
           <AddNewChartForm
@@ -134,7 +146,13 @@ class ChartSheet extends Component {
             refreshPage= { this.refreshPage }
             />
           <button id="goToAddChartForm" onClick={ this.revealForm }>NEW CHART</button>
-          { this.state.selectedChartId == 0 ? null : <button id="editChart" onClick={ this.revealEditForm }>EDIT CHART</button> }
+          { this.state.selectedChartId == 0 ?
+            null :
+            <div id="editDeleteButtonsDiv">
+            <button id="editChart" onClick={ this.revealEditForm }>EDIT CHART</button>
+            <button id="deleteChart" onClick={() => { if (window.confirm('Are you sure you wish to delete this item?')) this.deleteChart(selectedChartId) }}>×</button>
+            </div>
+          }
           { this.state.chartsInDatabase.length ?
             <Select options={this.state.chartsInDatabase} onChange={this.selectOneChart} /> :
             null

@@ -12,25 +12,29 @@ const rootReducer = (state = initState, action) => {
   switch (action.type) {
     case 'RETRIEVE_DATA':
       let allItems = action.allItems;
-        return {
-          ...state,
-          items: allItems
-        };
+      return {
+        ...state,
+        items: allItems
+      };
       break;
     case 'RETRIEVE_CHARTS':
       let allCharts = action.allCharts;
-        return {
-          ...state,
-          charts: allCharts
-        };
+      return {
+        ...state,
+        charts: allCharts
+      };
       break;
     case 'SELECT_CHART':
       let selectedChartId = action.selectedChartId;
-        return {
-          ...state,
-          selectedChartId: selectedChartId
-        };
+      return {
+        ...state,
+        selectedChartId: selectedChartId
+      };
       break;
+    case 'DELETE_CHART':
+      return {
+        ...state
+      };
   }
   return state;
 }

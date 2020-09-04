@@ -69,3 +69,14 @@ table#descriptionTable {
 .chartSheetColumnLast {
   background-color: #A091D8;
 }
+
+#editDeleteButtonsDiv {
+  display: inline;
+}
+
+#deleteChart {
+  border-radius: 20px;
+  height: 25px;
+  font-weight: 900;
+  color: red;
+}
