@@ -16,7 +16,8 @@ class ChartSheet extends Component {
       chartsInDatabase: [],
       selectedChartId: 0,
       selectedChart: {},
-      options: {}
+      options: {},
+      edit: false
     }
   }
 
@@ -64,24 +65,58 @@ class ChartSheet extends Component {
     let form = document.getElementById('AddNewChartForm');
     form.style.display = "none";
     this.setState({
-      showForm: false
+      showForm: false,
+      edit: false
     });
   }
+
+  arrangeChartSelection = (selectedChartId) => {
+      this.props.selectChart(selectedChartId);
+          this.setState({
+            selectedChartId: selectedChartId,
+          })
+          let array = this.props.charts.filter(chart => chart.id == selectedChartId );
+          const selectedChart = array[0];
+          this.setState({
+            selectedChart: selectedChart
+          });
+    }
 
   selectOneChart = (e) => {
     let selectedChartId = e.value;
-    this.props.selectChart(selectedChartId);
+    this.arrangeChartSelection(selectedChartId);
+  }
+
+  editableDetails = () => {
+    let selectedChart = this.state.selectedChart;
+    const editableDetails = {
+      selectedChartId: selectedChart.id,
+      selectedChartCreatedAt: selectedChart.createdAt,
+      selectedChartTitle: selectedChart.title,
+      selectedChartUnitName: selectedChart.unitName,
+      selectedChartTarget: selectedChart.target,
+      selectedChartDescription: selectedChart.description
+    }
+    return editableDetails;
+  }
+
+  setEditTrue = () => {
     this.setState({
-      selectedChartId: selectedChartId,
+      edit: true
     })
-    let array = this.props.charts.filter(chart => chart.id == e.value );
-    const selectedChart = array[0];
-    this.setState({
-      selectedChart: selectedChart
-    });
+  }
+
+  revealEditForm = () => {
+    this.setEditTrue();
+    this.revealForm();
+  }
+
+  refreshPage = () => {
+    window.location.reload(false);
   }
 
   render() {
+  console.log(this.state.edit);
     if (this.state.loaded == false) {
       return(
         <div className='ChartSheet' >
@@ -92,8 +127,14 @@ class ChartSheet extends Component {
       let selectedChart = this.state.selectedChart;
       return(
         <div className='ChartSheet'>
-          <AddNewChartForm hideForm={ this.hideForm }/>
+          <AddNewChartForm
+            hideForm={ this.hideForm }
+            editableDetails={ this.state.edit == true ? this.editableDetails() : null }
+            selectNewChart={ this.arrangeChartSelection }
+            refreshPage= { this.refreshPage }
+            />
           <button id="goToAddChartForm" onClick={ this.revealForm }>NEW CHART</button>
+          { this.state.selectedChartId == 0 ? null : <button id="editChart" onClick={ this.revealEditForm }>EDIT CHART</button> }
           { this.state.chartsInDatabase.length ?
             <Select options={this.state.chartsInDatabase} onChange={this.selectOneChart} /> :
             null

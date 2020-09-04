@@ -87,7 +87,7 @@ class MainChart extends Component {
                 fontSize: 25
                   },
                   legend: {
-                    display: true,
+                    display: false,
                     position: 'right'
                   }
               }

@@ -1,5 +1,6 @@
 package eu.marcellofabbri.trender.controller;
 
+import eu.marcellofabbri.trender.assemblers.ChartAssembler;
 import eu.marcellofabbri.trender.model.dto.ChartRequestCreate;
 import eu.marcellofabbri.trender.model.dto.ChartResponse;
 import eu.marcellofabbri.trender.model.dto.MeasurementRequestCreate;
@@ -23,6 +24,8 @@ import java.util.Optional;
 @RestController
 @RequestMapping("/api")
 public class ChartController {
+
+  ChartAssembler chartAssembler;
 
   @Autowired
   ChartRepository chartRepository;
@@ -56,8 +59,9 @@ public class ChartController {
   }
 
   @PutMapping("/charts/{id}")
-  public ResponseEntity<Chart> updateChart(@PathVariable("id") Long id, @RequestBody Chart chart) {
+  public ResponseEntity<Chart> updateChart(@PathVariable("id") Long id, @RequestBody ChartRequestCreate chartRequestCreate) {
 
+    Chart chart = chartAssembler.requestCreateToDomainObject(chartRequestCreate);
     Optional<Chart> chartData = chartRepository.findById(id);
     if (chartData.isPresent()) {
       Chart savedChart = chartData.get();
