@@ -32,6 +32,10 @@ class ChartSheet extends Component {
 
   componentWillReceiveProps(nextProps) {
     this.createOptions(nextProps.charts);
+    this.setState({
+      selectedChart: nextProps.alreadySelectedChart,
+      selectedChartId: nextProps.alreadySelectedChart.id
+    })
     this.setLoaded(true);
   }
 
@@ -127,7 +131,6 @@ class ChartSheet extends Component {
   }
 
   render() {
-  console.log(this.state.edit);
     if (this.state.loaded == false) {
       return(
         <div className='ChartSheet' >
@@ -137,6 +140,7 @@ class ChartSheet extends Component {
     } else {
       let selectedChart = this.state.selectedChart;
       let selectedChartId = this.state.selectedChartId;
+      console.log('HERE!', selectedChartId)
       return(
         <div className='ChartSheet'>
           <AddNewChartForm
@@ -154,10 +158,10 @@ class ChartSheet extends Component {
             </div>
           }
           { this.state.chartsInDatabase.length ?
-            <Select options={this.state.chartsInDatabase} onChange={this.selectOneChart} /> :
+            <Select value={ selectedChart.title } options={this.state.chartsInDatabase} onChange={this.selectOneChart} /> :
             null
           }
-          <Select id="chartSelectionBox" options={this.state.options} onChange={this.selectOneChart.bind(this)} />
+          <Select id="chartSelectionBox" defaultValue={{ label: this.props.alreadySelectedChart.title, value: selectedChartId }} options={this.state.options} onChange={this.selectOneChart.bind(this)} />
           <table id="chartsTable">
               <tr className="chartSpecsRow">
                 <th className="chartSheetColumnLeft">CHART</th>

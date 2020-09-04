@@ -1,0 +1,30 @@
+.specs {
+  background-color: #AED4FF;
+  height: 23.5vh;
+  width: 40vh;
+}
+
+.specTitle {
+  width: 15vh;
+  height: 2vh;
+  background-color: #7D67CB;
+  font-weight: 600;
+}
+
+.specsTable {
+  margin-left: auto;
+  margin-right: auto;
+  height: 20vh;
+}
+
+.specValue {
+  width: 15vh;
+  height: 4vh;
+  background-color: #DEDAF7;
+}
+
+.emptyRow {
+  margin-left: auto;
+  margin-right: auto;
+  height: 2vh;
+}

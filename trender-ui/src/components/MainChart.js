@@ -16,6 +16,7 @@ class MainChart extends Component {
   }
 
   getChartData(data) {
+    console.log('TARGET??', this.props.target)
     let target = this.props.target;
     let extrapolatedLabels = data.map(element => {
       return epochToDate(element.createdAt) });

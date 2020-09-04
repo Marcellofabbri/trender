@@ -42,3 +42,12 @@
   flex-flow: row;
 }
 
+.NoChart {
+  background-color: #DEDAF7;
+  height: 60vh;
+  width: 111vh;
+}
+
+.mainChartPlaceholders {
+  height: 60vh;
+}

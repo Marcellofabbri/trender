@@ -3,12 +3,15 @@ import logo from '../logo.svg';
 import '../style/Body.css';
 import MainChart from './MainChart.js';
 import TableData from './TableData.js';
+import Specs from './Specs.js';
 import Chart from 'chart.js';
 import ChartSheet from './ChartSheet.js'
 import axios from 'axios';
 import {retrieveData} from '../actions/retrieveData';
 import {retrieveCharts} from '../actions/retrieveCharts';
 import {connect} from 'react-redux';
+import emptyChartImage from '../empty-chart.png';
+import selectChartImage from '../select-chart.png';
 
 class Body extends Component {
   constructor(props) {
@@ -65,13 +68,16 @@ class Body extends Component {
     return filteredItems;
   }
 
+
+
   render() {
-  const { items, charts, selectedChartId, selectedChartUnit } = this.props;
-  const sortedItems = items.sort((a, b) => a.createdAt > b.createdAt ? 1 : -1);
-  const reversedItems = items.sort((a, b) => a.createdAt < b.createdAt ? 1 : -1);
-  const filteredItems = this.filterBySelectedId(sortedItems, selectedChartId);
-  const unit = filteredItems.length > 0 ? filteredItems[0].unit : '';
-  const selectedChart = charts.length > 0 ? (charts.filter(chart => chart.id == selectedChartId))[0] : '';
+    const { items, charts, selectedChartId, selectedChartUnit } = this.props;
+    const sortedItems = items.sort((a, b) => a.createdAt > b.createdAt ? 1 : -1);
+
+    const filteredItems = this.filterBySelectedId(sortedItems, selectedChartId);
+    const reversedItems = filteredItems.sort((a, b) => a.createdAt < b.createdAt ? 1 : -1);
+    const unit = filteredItems.length > 0 ? filteredItems[0].unit : '';
+    const selectedChart = charts.length > 0 ? (charts.filter(chart => chart.id == selectedChartId))[0] : '';
     let {
       isLoaded,
       reload
@@ -80,6 +86,7 @@ class Body extends Component {
     if (!isLoaded) {
       return (<div> Loading... </div>)
     } else {
+      console.log('OK', filteredItems.length, selectedChart)
       return (
         <div className="Body">
           <table className="Grid">
@@ -89,11 +96,13 @@ class Body extends Component {
                   {
                     filteredItems.length > 0 ?
                     <MainChart data={ filteredItems } selectedChartId={ selectedChartId } target={ this.state.selectedChartTarget } /> :
-                    <div className="NoChart">SELECT A CHART FROM THE PANEL</div>
+                    filteredItems.length == 0 && selectedChartId == 0 ?
+                    <div className="NoChart"><img className="mainChartPlaceholders" src={ selectChartImage } /></div> :
+                    <div className="NoChart"><img className="mainChartPlaceholders" src={ emptyChartImage } /></div>
                   }
                 </td>
                 <td>
-                  <ChartSheet charts={ charts }/>
+                  <ChartSheet charts={ charts } alreadySelectedChart={ selectedChart } />
                 </td>
               </tr>
               <tr>
@@ -101,12 +110,22 @@ class Body extends Component {
                   {
                   filteredItems.length > 0 ?
                   <TableData data={ reversedItems } action={ this.onDeleteEntry } unit={ unit } /> :
-                  <TableData className="NoTableData"/>
+                  filteredItems.length == 0 && selectedChartId == 0 ?
+                  <TableData className="NoTableData"/> :
+                  <TableData data={[]} action={ this.onDeleteEntry } unit={ selectedChart.unitName } />
+                  }
+                </td>
+                <td>
+                  {
+                  filteredItems.length > 0 ?
+                  <Specs data={ reversedItems } /> :
+                  <Specs className="NoSpecs" data={[]}/>
                   }
                 </td>
               </tr>
             </tbody>
           </table>
+          <button onClick={ () => console.log(this.props.reducer) } >REDUX</button>
         </div>
       );
     }
@@ -117,7 +136,8 @@ const mapStateToProps = (state, ownProps) => {
   return {
     items: state.items,
     charts: state.charts,
-    selectedChartId: state.selectedChartId
+    selectedChartId: state.selectedChartId,
+    reducer: state
   }
 }
 
