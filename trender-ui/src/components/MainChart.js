@@ -4,6 +4,7 @@ import 'chartjs-plugin-annotation';
 import '../style/MainChart.css';
 import dateStraightener from '../helpers/dateStraightener';
 import epochToDate from '../helpers/epochToDate';
+import {connect} from 'react-redux';
 
 class MainChart extends Component {
   constructor(props) {
@@ -11,13 +12,12 @@ class MainChart extends Component {
     this.state = {
       chartData: {
       },
-      selectedChartId: props.selectedChartId
+      selectedChartId: props.selectedChart.id
     }
   }
 
-  getChartData(data) {
-    console.log('TARGET??', this.props.target)
-    let target = this.props.target;
+  getChartData(data, selectedChart) {
+    let target = selectedChart.target;
     let extrapolatedLabels = data.map(element => {
       return epochToDate(element.createdAt) });
     let extrapolatedLabel = data[0].unit;
@@ -27,8 +27,8 @@ class MainChart extends Component {
       return element.value < target ? 'rgba(255, 99, 132, 0.6)' : 'rgba(77, 215, 81, 0.6)'
     });
 
-    this.setState({
-      chartData: {
+    let chartData =
+      {
         labels: extrapolatedLabels,
         datasets: [
           {
@@ -38,32 +38,27 @@ class MainChart extends Component {
           }
         ]
       }
-    })
-  }
 
-  componentDidMount() {
-    this.getChartData(this.props.data);
-  }
 
-  componentWillReceiveProps(nextProps) {
-      this.getChartData(nextProps.data)
+    return chartData;
   }
 
   render() {
-    const { data, selectedChartId, target } = this.props;
+    const { data, selectedChart} = this.props;
+    const chartData = this.getChartData(data, selectedChart);
       return (
         <section className="MainChart">
           <Bar
             width = { 800 }
             height = { 400 }
-            data = { this.state.chartData }
+            data = {chartData}
             options = {{
               annotation: {
                 annotations: [{
                   type: 'line',
                   mode: 'horizontal',
                   scaleID: 'y-axis-0',
-                  value: target,
+                  value: selectedChart.target,
                   borderColor: 'rgb(255, 0, 0)',
                   borderWidth: 2,
                   label: {

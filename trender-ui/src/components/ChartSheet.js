@@ -76,15 +76,15 @@ class ChartSheet extends Component {
   }
 
   arrangeChartSelection = (selectedChartId) => {
-      this.props.selectChart(selectedChartId);
-          this.setState({
-            selectedChartId: selectedChartId,
-          })
-          let array = this.props.charts.filter(chart => chart.id == selectedChartId );
-          const selectedChart = array[0];
-          this.setState({
-            selectedChart: selectedChart
-          });
+    this.props.selectChart(selectedChartId);
+      this.setState({
+        selectedChartId: selectedChartId,
+      })
+      let array = this.props.charts.filter(chart => chart.id == selectedChartId );
+      const selectedChart = array[0];
+      this.setState({
+        selectedChart: selectedChart
+      });
     }
 
   selectOneChart = (e) => {

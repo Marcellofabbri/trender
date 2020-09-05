@@ -63,7 +63,6 @@ class Body extends Component {
   }
 
   filterBySelectedId = (items, id) => {
-    console.log('FILTERBYSELECTEDID', this.props);
     let filteredItems = items.filter(item => item.chartID == id)
     return filteredItems;
   }
@@ -73,11 +72,11 @@ class Body extends Component {
   render() {
     const { items, charts, selectedChartId, selectedChartUnit } = this.props;
     const sortedItems = items.sort((a, b) => a.createdAt > b.createdAt ? 1 : -1);
-
     const filteredItems = this.filterBySelectedId(sortedItems, selectedChartId);
     const reversedItems = filteredItems.sort((a, b) => a.createdAt < b.createdAt ? 1 : -1);
     const unit = filteredItems.length > 0 ? filteredItems[0].unit : '';
     const selectedChart = charts.length > 0 ? (charts.filter(chart => chart.id == selectedChartId))[0] : '';
+
     let {
       isLoaded,
       reload
@@ -86,7 +85,6 @@ class Body extends Component {
     if (!isLoaded) {
       return (<div> Loading... </div>)
     } else {
-      console.log('OK', filteredItems.length, selectedChart)
       return (
         <div className="Body">
           <table className="Grid">
@@ -95,7 +93,7 @@ class Body extends Component {
                 <td>
                   {
                     filteredItems.length > 0 ?
-                    <MainChart data={ filteredItems } selectedChartId={ selectedChartId } target={ this.state.selectedChartTarget } /> :
+                    <MainChart data={ filteredItems } selectedChart={ selectedChart }  /> :
                     filteredItems.length == 0 && selectedChartId == 0 ?
                     <div className="NoChart"><img className="mainChartPlaceholders" src={ selectChartImage } /></div> :
                     <div className="NoChart"><img className="mainChartPlaceholders" src={ emptyChartImage } /></div>
@@ -136,8 +134,7 @@ const mapStateToProps = (state, ownProps) => {
   return {
     items: state.items,
     charts: state.charts,
-    selectedChartId: state.selectedChartId,
-    reducer: state
+    selectedChartId: state.selectedChartId
   }
 }
 
