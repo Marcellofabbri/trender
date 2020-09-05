@@ -20,9 +20,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d0c10668-9459-466f-8e53-748e2eedcc4d" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/trender-ui/src/actions/changeView.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/trender-ui/src/components/TypeOfView.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/trender-ui/src/components/User.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/trender-ui/src/style/TypeOfView.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/trender-ui/src/style/User.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/trender-ui/src/components/Body.js" beforeDir="false" afterPath="$PROJECT_DIR$/trender-ui/src/components/Body.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/trender-ui/src/components/ChartSheet.js" beforeDir="false" afterPath="$PROJECT_DIR$/trender-ui/src/components/ChartSheet.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/trender-ui/src/components/MainChart.js" beforeDir="false" afterPath="$PROJECT_DIR$/trender-ui/src/components/MainChart.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/trender-ui/src/reducers/rootReducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/trender-ui/src/reducers/rootReducer.js" afterDir="false" />
     </list>

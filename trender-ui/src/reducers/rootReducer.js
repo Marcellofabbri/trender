@@ -5,7 +5,9 @@ const initState = {
   charts: [
     { id: 0, createdAt: '2020-01-01T00:00:00', title: '', unit: '', description: '', target: 0 }
   ],
-  selectedChartId: 0
+  selectedChartId: 0,
+  viewLapse: {viewAll: true, viewMonthly: false, viewWeekly: false},
+  viewWhat: {viewDataOnly: true, viewWholePeriod: false}
 }
 
 const rootReducer = (state = initState, action) => {
@@ -35,6 +37,21 @@ const rootReducer = (state = initState, action) => {
       return {
         ...state
       };
+      break;
+    case 'CHANGE_VIEW':
+      let lapse = action.lapse;
+      let what = action.what;
+      if (lapse != null) {
+        return {
+          ...state,
+          viewLapse: lapse
+        }
+      } else if (what != null) {
+        return {
+          ...state,
+          viewWhat: what
+        }
+      }
       break;
   }
   return state;

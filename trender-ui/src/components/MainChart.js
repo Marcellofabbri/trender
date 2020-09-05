@@ -5,6 +5,7 @@ import '../style/MainChart.css';
 import dateStraightener from '../helpers/dateStraightener';
 import epochToDate from '../helpers/epochToDate';
 import {connect} from 'react-redux';
+import TypeOfView from './TypeOfView.js';
 
 class MainChart extends Component {
   constructor(props) {

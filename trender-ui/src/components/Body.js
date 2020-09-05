@@ -12,6 +12,8 @@ import {retrieveCharts} from '../actions/retrieveCharts';
 import {connect} from 'react-redux';
 import emptyChartImage from '../empty-chart.png';
 import selectChartImage from '../select-chart.png';
+import TypeOfView from './TypeOfView.js';
+import User from './User.js';
 
 class Body extends Component {
   constructor(props) {
@@ -91,6 +93,9 @@ class Body extends Component {
             <tbody>
               <tr>
                 <td>
+                  <TypeOfView />
+                </td>
+                <td>
                   {
                     filteredItems.length > 0 ?
                     <MainChart data={ filteredItems } selectedChart={ selectedChart }  /> :
@@ -104,6 +109,9 @@ class Body extends Component {
                 </td>
               </tr>
               <tr>
+                <td>
+                  <User />
+                </td>
                 <td>
                   {
                   filteredItems.length > 0 ?
@@ -134,7 +142,8 @@ const mapStateToProps = (state, ownProps) => {
   return {
     items: state.items,
     charts: state.charts,
-    selectedChartId: state.selectedChartId
+    selectedChartId: state.selectedChartId,
+    reducer: state
   }
 }
 

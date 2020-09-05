@@ -1,0 +1,31 @@
+.typeOfView {
+  background-color: #7D67CB;
+  width: 40vh;
+  height: 60vh;
+}
+
+.viewButton {
+  font-weight: 600;
+  height: 8vh;
+  width: 17vh;
+  border-radius: 10px;
+}
+
+.firstThreeButtons {
+  padding-top: 5vh;
+  margin-bottom: 5vh;
+}
+
+.lastTwoButtons {
+  margin-top: 5vh;
+  margin-bottom: 5vh;
+}
+
+#viewAll1, #viewMonthly1, #viewWeekly1, #viewDataOnly1, #viewWholePeriod1 {
+  background-color: #59BA42;
+  color: white;
+}
+
+#viewAll0, #viewMonthly0, #viewWeekly0, #viewDataOnly0, #viewWholePeriod0 {
+  background-color: #C5B4B4;
+}
