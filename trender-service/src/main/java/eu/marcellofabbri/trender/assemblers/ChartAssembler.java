@@ -10,7 +10,8 @@ public class ChartAssembler {
             chartRequestCreate.getTitle(),
             chartRequestCreate.getUnitName(),
             chartRequestCreate.getDescription(),
-            chartRequestCreate.getTarget()
+            chartRequestCreate.getTarget(),
+            chartRequestCreate.getUserID()
     );
     return chart;
   }

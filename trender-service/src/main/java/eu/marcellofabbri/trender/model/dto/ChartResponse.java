@@ -12,6 +12,7 @@ public class ChartResponse {
   private final String unitName;
   private final String description;
   private final long target;
+  private final long userID;
 
   @JsonCreator
   public ChartResponse(@JsonProperty("id") long id,
@@ -19,13 +20,15 @@ public class ChartResponse {
                        @JsonProperty("title") String title,
                        @JsonProperty("unitName") String unitName,
                        @JsonProperty("description") String description,
-                       @JsonProperty("target") long target) {
+                       @JsonProperty("target") long target,
+                       @JsonProperty("userID") long userID) {
     this.id = id;
     this.createdAt = createdAt;
     this.title = title;
     this.unitName = unitName;
     this.description = description;
     this.target = target;
+    this.userID = userID;
   }
 
   public long getId() {
@@ -47,4 +50,6 @@ public class ChartResponse {
   public String getDescription() { return description; }
 
   public long getTarget() { return target; }
+
+  public long getUserID() { return userID; }
 }

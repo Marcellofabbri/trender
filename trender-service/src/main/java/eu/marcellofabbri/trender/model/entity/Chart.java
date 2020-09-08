@@ -9,6 +9,10 @@ import java.util.Set;
 @Table(name = "chart")
 public class Chart implements Serializable {
 
+  @ManyToOne
+  @JoinColumn(name="userID", nullable=false, insertable = false, updatable = false)
+  private User user;
+
   @OneToMany(mappedBy = "chart")
   private Set<Measurement> measurements;
 
@@ -31,14 +35,18 @@ public class Chart implements Serializable {
   @Column (name = "target")
   private long target;
 
+  @Column (name = "userID")
+  private long userID;
+
   protected Chart() {}
 
-  public Chart(OffsetDateTime createdAt, String title, String unitName, String description, long target) {
+  public Chart(OffsetDateTime createdAt, String title, String unitName, String description, long target, long userID) {
     this.createdAt = createdAt;
     this.title = title;
     this.unitName = unitName;
     this.description = description;
     this.target = target;
+    this.userID = userID;
   }
 
   public long getId() {
@@ -83,5 +91,13 @@ public class Chart implements Serializable {
 
   public void setTarget(long target) {
     this.target = target;
+  }
+
+  public long getUserID() {
+    return userID;
+  }
+
+  public void setUserID(long userID) {
+    this.userID = userID;
   }
 }

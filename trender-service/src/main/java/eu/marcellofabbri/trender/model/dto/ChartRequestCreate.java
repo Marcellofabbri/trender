@@ -17,18 +17,22 @@ public class ChartRequestCreate {
   private final String description;
   @Min(value=0)
   private final long target;
+  @NotNull
+  private final long userID;
 
   @JsonCreator
   public ChartRequestCreate(@JsonProperty("createdAt") OffsetDateTime createdAt,
                                   @JsonProperty("title") String title,
                                   @JsonProperty("unitName") String unitName,
                                   @JsonProperty("description") String description,
-                                  @JsonProperty("target") long target) {
+                                  @JsonProperty("target") long target,
+                                  @JsonProperty("userID") long userID) {
     this.createdAt = createdAt;
     this.title = title;
     this.unitName = unitName;
     this.description = description;
     this.target = target;
+    this.userID = userID;
   }
 
   public OffsetDateTime getCreatedAt() {
@@ -46,4 +50,6 @@ public class ChartRequestCreate {
   public String getDescription() { return description; }
 
   public long getTarget() { return target; }
+
+  public long getUserID() { return userID; }
 }
