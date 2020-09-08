@@ -75,7 +75,7 @@ class PostEntryForm extends Component {
 
 const mapStateToProps = (state, ownProps) => {
   return {
-    chartID: state.selectedChartId
+    chartID: state.main.selectedChartId
   }
 }
 

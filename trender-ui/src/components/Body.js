@@ -42,7 +42,6 @@ class Body extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    console.log('NEXTPROPS', nextProps)
     const charts = nextProps.charts;
     const selectedChartId = nextProps.selectedChartId;
     const chosenCharts = charts.filter(chart => chart.id == selectedChartId);
@@ -69,15 +68,29 @@ class Body extends Component {
     return filteredItems;
   }
 
+  selectedChartByDefault = () => {
+    return {
+      createdAt: 0,
+      description: '',
+      id: 0,
+      target: 'N/A',
+      title: "N/A",
+      unitName: "N/A",
+      username: 1
+    }
+  }
+
 
 
   render() {
     const { items, charts, selectedChartId, selectedChartUnit } = this.props;
+    console.log('PROPS', this.props, 'CHARTS', this.props.charts)
     const sortedItems = items.sort((a, b) => a.createdAt > b.createdAt ? 1 : -1);
     const filteredItems = this.filterBySelectedId(sortedItems, selectedChartId);
     const reversedItems = filteredItems.sort((a, b) => a.createdAt < b.createdAt ? 1 : -1);
     const unit = filteredItems.length > 0 ? filteredItems[0].unit : '';
-    const selectedChart = charts.length > 0 ? (charts.filter(chart => chart.id == selectedChartId))[0] : '';
+    const selectedCharts = charts.length > 0 ? (charts.filter(chart => chart.id == selectedChartId)) : [];
+    const selectedChart = selectedCharts.length == 0 ? this.selectedChartByDefault : selectedCharts[0];
 
     let {
       isLoaded,
@@ -140,9 +153,9 @@ class Body extends Component {
 
 const mapStateToProps = (state, ownProps) => {
   return {
-    items: state.items,
-    charts: state.charts,
-    selectedChartId: state.selectedChartId,
+    items: state.main.items,
+    charts: state.main.charts,
+    selectedChartId: state.main.selectedChartId,
     reducer: state
   }
 }

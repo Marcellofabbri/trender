@@ -1,6 +1,7 @@
 import axios from 'axios';
 
 const retrieveChartsAction = (json) => {
+  console.log('JSON', json)
   return {
     type: 'RETRIEVE_CHARTS',
     allCharts: json

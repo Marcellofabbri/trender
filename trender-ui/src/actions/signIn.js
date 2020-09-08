@@ -1,14 +1,35 @@
 import axios from 'axios';
 
+const signInSuccessful = (user) => {
+  return {
+    type: 'LOGIN_SUCCESSFUL',
+    username: user.username
+  }
+}
+
+const signInFailed = () => {
+  return {
+    type: 'LOGIN_FAILED'
+  }
+}
+
+const checkUsers = (json, username, password) => {
+  if (json.length > 0) {
+    return json.filter(user => user.username == username && user.password == password);
+  }
+  // returns the users that it finds: e.g. { id: 1, username: 'TheName', password: 'PWD' }
+}
+
 export const signIn = (credentials) => {
-  let user = credentials.user;
+  let username = credentials.username;
   let password = credentials.password;
   return (dispatch) => {
-    fetch("api/users/?user=" + user + "&password=" + password)
-    .then(results => results.json())
-    .then((json) => { dispatch({ type: 'LOGIN_SUCCESS' });
+    fetch("api/users/")
+    .then(response => response.json())
+    .then((json) => { typeof checkUsers(json, username, password) != 'undefined' && checkUsers(json, username, password).length > 0 ?
+      dispatch(signInSuccessful(checkUsers(json, username, password))) :
+      dispatch(signInFailed())
     })
-    .catch((err) => { dispatch({ type: 'LOGIN_ERROR', err });
-    })
-  }
+    .catch((err) => console.log(err))
+    };
 }

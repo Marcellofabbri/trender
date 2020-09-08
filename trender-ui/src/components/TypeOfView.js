@@ -58,8 +58,8 @@ class TypeOfView extends Component {
 
 const mapStateToProps = (state, ownProps) => {
   return {
-    viewLapse: state.viewLapse,
-    viewWhat: state.viewWhat
+    viewLapse: state.main.viewLapse,
+    viewWhat: state.main.viewWhat
   }
 }
 

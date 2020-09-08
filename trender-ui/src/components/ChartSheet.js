@@ -32,6 +32,7 @@ class ChartSheet extends Component {
 
   componentWillReceiveProps(nextProps) {
     this.createOptions(nextProps.charts);
+    console.log('ALREADYSELECTEDCHART', nextProps.alreadySelectedChart)
     this.setState({
       selectedChart: nextProps.alreadySelectedChart,
       selectedChartId: nextProps.alreadySelectedChart.id
@@ -140,7 +141,6 @@ class ChartSheet extends Component {
     } else {
       let selectedChart = this.state.selectedChart;
       let selectedChartId = this.state.selectedChartId;
-      console.log('HERE!', selectedChartId)
       return(
         <div className='ChartSheet'>
           <AddNewChartForm
@@ -190,7 +190,7 @@ class ChartSheet extends Component {
 
 const mapStateToProps = (state, ownProps) => {
   return {
-    selectChartId: state.selectedChartId
+    selectChartId: state.main.selectedChartId
   }
 }
 

@@ -5,6 +5,7 @@ import eu.marcellofabbri.trender.model.dto.UserRequestCreate;
 import eu.marcellofabbri.trender.model.dto.UserResponse;
 import eu.marcellofabbri.trender.model.dto.UserRequestCreate;
 import eu.marcellofabbri.trender.model.dto.UserResponse;
+import eu.marcellofabbri.trender.model.entity.Chart;
 import eu.marcellofabbri.trender.model.entity.User;
 import eu.marcellofabbri.trender.model.entity.User;
 import eu.marcellofabbri.trender.repository.UserRepository;
@@ -15,6 +16,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 @RestController
@@ -28,12 +31,21 @@ public class UserController {
   @Autowired
   UserService userService;
 
-  @PostMapping("/user")
+  @GetMapping("/users")
+  public List<User> getAllUsers() {
+
+    List<User> list = new ArrayList<>();
+    Iterable<User> trackers = userRepository.findAll();
+    trackers.forEach(list::add);
+    return list;
+  }
+
+  @PostMapping("/users")
   public UserResponse createUser(@RequestBody @Valid UserRequestCreate request) {
     return userService.createUser(request);
   }
 
-  @GetMapping("/user/{id}")
+  @GetMapping("/users/{id}")
   public ResponseEntity<User> getUser(@PathVariable("id") Long id) {
 
     Optional<User> userData = userRepository.findById(id);
@@ -44,7 +56,8 @@ public class UserController {
     }
   }
 
-  @PutMapping("/user/{id}")
+
+  @PutMapping("/users/{id}")
   public ResponseEntity<User> updateUser(@PathVariable("id") Long id, @RequestBody UserRequestCreate userRequestCreate) {
 
     User user = userAssembler.requestCreateToDomainObject(userRequestCreate);
@@ -61,7 +74,7 @@ public class UserController {
     }
   }
 
-  @DeleteMapping("/user/{id}")
+  @DeleteMapping("/users/{id}")
   public ResponseEntity<String> deleteUser(@PathVariable("id") Long id) {
 
     try {
