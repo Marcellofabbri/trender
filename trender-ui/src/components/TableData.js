@@ -3,6 +3,8 @@ import axios from 'axios';
 import '../style/TableData.css';
 import PostEntryForm from './PostEntryForm';
 import epochToDate from '../helpers/epochToDate';
+import {connect} from 'react-redux';
+import getWeekNumber from '../helpers/getWeekNumber.js';
 
 class TableData extends Component {
   state = {
@@ -22,13 +24,26 @@ class TableData extends Component {
   }
 
   render() {
-    const { data, action, unit } = this.props;
+    const { data, action, unit , viewLapse, viewWhat } = this.props;
+    var epochSeconds = parseInt((new Date().getTime())/1000);
     if (typeof data == 'undefined') {
       return(
         <div>Select chart</div>
       )
     } else {
-      var rows = data.map(row => {
+      if (viewLapse.viewWeekly == true) {
+        let currentYear = getWeekNumber(epochSeconds)[0];
+        let currentWeek = getWeekNumber(epochSeconds)[1];
+        var rows = data.filter(row => getWeekNumber(row.createdAt)[0] == currentYear && getWeekNumber(row.createdAt)[1] == currentWeek)
+      } else if (viewLapse.viewMonthly == true) {
+        let currentMonth = new Date().getMonth();
+        var rows = data.filter(row => new Date(row.createdAt*1000).getMonth() == currentMonth);
+      } else {
+        var rows = data.sort((a, b) => a.createdAt < b.createdAt ? 1 : -1);
+      }
+
+
+      var rows = rows.map(row => {
         var rowId = row.id;
         return(
           <tr className="row" key={ row.id }>
@@ -44,8 +59,10 @@ class TableData extends Component {
               </button>
               </td>
          </tr>
-          )
-        })
+        )
+      });
+
+
         return(
           <div className="TableData">
             { this.state.showForm ? <PostEntryForm className="postEntryForm" unit={ unit }/> : null }
@@ -68,7 +85,14 @@ class TableData extends Component {
   }
 }
 
-export default TableData;
+const mapStateToProps = (state, ownProps) => {
+  return {
+    viewLapse: state.viewLapse,
+    viewWhat: state.viewWhat
+  }
+}
+
+export default connect(mapStateToProps, null)(TableData)
 
 //  formats an OffsetDateTime type of string into a string with normal date with slashes
 //  e.g. 2005-09-13T03:40:00Z   =>   13/09/2005

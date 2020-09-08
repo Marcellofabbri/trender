@@ -3,3 +3,8 @@
   width: 40vh;
   height: 25vh;
 }
+
+#loginForm {
+  padding-top: auto;
+  padding-bottom: auto;
+}

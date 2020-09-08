@@ -9,6 +9,7 @@
   height: 8vh;
   width: 17vh;
   border-radius: 10px;
+  outline: none;
 }
 
 .firstThreeButtons {

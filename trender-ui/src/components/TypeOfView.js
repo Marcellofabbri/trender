@@ -28,44 +28,30 @@ class TypeOfView extends Component {
 
   render() {
     const { viewLapse, viewWhat } = this.props;
-    console.log(this.props)
     return (
       <div className="typeOfView">
         <div className="firstThreeButtons">
-        {
-        viewLapse.viewAll ?
-        <button className="viewButton" id="viewAll1" onClick={ this.handleClick }>VIEW ALL</button> :
-        <button className="viewButton" id="viewAll0" onClick={ this.handleClick }>VIEW ALL</button>
-        }
-        <br/>
-        {
-        viewLapse.viewMonthly ?
-        <button className="viewButton" id="viewMonthly1" onClick={ this.handleClick }>VIEW MONTHLY</button> :
-        <button className="viewButton" id="viewMonthly0" onClick={ this.handleClick }>VIEW MONTHLY</button>
-        }
-        <br/>
-        {
-        viewLapse.viewWeekly ?
-        <button className="viewButton" id="viewWeekly1" onClick={ this.handleClick }>VIEW WEEKLY</button> :
-        <button className="viewButton" id="viewWeekly0" onClick={ this.handleClick }>VIEW WEEKLY</button>
-        }
-      </div>
+          {
+          viewLapse.viewAll ?
+          <button className="viewButton" id="viewAll1" onClick={ this.handleClick }>VIEW ALL</button> :
+          <button className="viewButton" id="viewAll0" onClick={ this.handleClick }>VIEW ALL</button>
+          }
+          <br/>
+          {
+          viewLapse.viewMonthly ?
+          <button className="viewButton" id="viewMonthly1" onClick={ this.handleClick }>VIEW MONTHLY</button> :
+          <button className="viewButton" id="viewMonthly0" onClick={ this.handleClick }>VIEW MONTHLY</button>
+          }
+          <br/>
+          {
+          viewLapse.viewWeekly ?
+          <button className="viewButton" id="viewWeekly1" onClick={ this.handleClick }>VIEW WEEKLY</button> :
+          <button className="viewButton" id="viewWeekly0" onClick={ this.handleClick }>VIEW WEEKLY</button>
+          }
+        </div>
 
-      <div className="lastTwoButtons">
-        {
-        viewWhat.viewDataOnly ?
-        <button className="viewButton" id="viewDataOnly1" onClick={ this.handleClick }>VIEW DATA ONLY</button> :
-        <button className="viewButton" id="viewDataOnly0" onClick={ this.handleClick }>VIEW DATA ONLY</button>
-        }
-        <br/>
-        {
-        viewWhat.viewWholePeriod ?
-        <button className="viewButton" id="viewWholePeriod1" onClick={ this.handleClick }>VIEW PERIOD</button> :
-        <button className="viewButton" id="viewWholePeriod0" onClick={ this.handleClick }>VIEW PERIOD</button>
-        }
-      </div>
-    </div>
 
+      </div>
     )
   }
 }
@@ -83,4 +69,18 @@ const mapDispatchToProps = (dispatch) => {
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(TypeOfView)
+export default connect(mapStateToProps, mapDispatchToProps)(TypeOfView);
+
+//      <div className="lastTwoButtons">
+//        {
+//        viewWhat.viewDataOnly ?
+//        <button className="viewButton" id="viewDataOnly1" onClick={ this.handleClick }>VIEW DATA ONLY</button> :
+//        <button className="viewButton" id="viewDataOnly0" onClick={ this.handleClick }>VIEW DATA ONLY</button>
+//        }
+//        <br/>
+//        {
+//        viewWhat.viewWholePeriod ?
+//        <button className="viewButton" id="viewWholePeriod1" onClick={ this.handleClick }>VIEW PERIOD</button> :
+//        <button className="viewButton" id="viewWholePeriod0" onClick={ this.handleClick }>VIEW PERIOD</button>
+//        }
+//      </div>
