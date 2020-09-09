@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { signIn } from '../../actions/signIn.js';
 import { Redirect, useHistory } from "react-router-dom";
+import { SignUp } from './SignUp.js';
 
 class SignIn extends Component {
   state = {
@@ -52,6 +53,7 @@ class SignIn extends Component {
             { authError ? <p>{authError}</p> : null }
           </div>
         </form>
+        <button onClick={console.log(this.props.redux)}>Redux</button>
       </div>
     )
   }
@@ -60,7 +62,8 @@ class SignIn extends Component {
 const mapStateToProps = (state, ownProps) => {
   return {
     authError: state.auth.authError,
-    username: state.auth.username
+    username: state.auth.username,
+    redux: state
   }
 }
 

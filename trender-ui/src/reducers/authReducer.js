@@ -1,7 +1,8 @@
 const initState = {
   authError: null,
   loggedIn: false,
-  username: null
+  username: null,
+  userID: null
 }
 
 const authReducer = (state = initState, action) => {
@@ -13,6 +14,7 @@ const authReducer = (state = initState, action) => {
     }
     break;
     case 'LOGIN_SUCCESSFUL':
+    console.log('logged in')
     return {
       ...state,
       authError: null,

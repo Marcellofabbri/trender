@@ -2,6 +2,7 @@ import axios from 'axios';
 
 const signInSuccessful = (user) => {
   let username = user[0].username
+  let userID = user[0].userID
   return {
     type: 'LOGIN_SUCCESSFUL',
     username: username

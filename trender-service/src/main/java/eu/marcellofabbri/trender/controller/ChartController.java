@@ -34,10 +34,10 @@ public class ChartController {
   ChartService chartService;
 
   @GetMapping("/charts")
-  public List<Chart> getAllCharts() {
+  public List<Chart> getAllCharts(@RequestParam(required = false) String username) {
 
     List<Chart> list = new ArrayList<>();
-    Iterable<Chart> trackers = chartRepository.findAll();
+    Iterable<Chart> trackers = username == null ? chartRepository.findAll() : chartRepository.findByUsername(username);
     trackers.forEach(list::add);
     return list;
   }
