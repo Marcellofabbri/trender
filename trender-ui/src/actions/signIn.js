@@ -2,10 +2,11 @@ import axios from 'axios';
 
 const signInSuccessful = (user) => {
   let username = user[0].username
-  let userID = user[0].userID
+  let userID = user[0].id
   return {
     type: 'LOGIN_SUCCESSFUL',
-    username: username
+    username: username,
+    userID: userID
   }
 }
 

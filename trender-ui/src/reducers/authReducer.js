@@ -19,7 +19,8 @@ const authReducer = (state = initState, action) => {
       ...state,
       authError: null,
       loggedIn: true,
-      username: action.username
+      username: action.username,
+      userID: action.userID
     }
     break;
     case 'SIGN_OUT':

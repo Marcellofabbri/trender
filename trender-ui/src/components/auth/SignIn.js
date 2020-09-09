@@ -17,15 +17,8 @@ class SignIn extends Component {
   }
 
   handleSubmit = (e) => {
+    e.preventDefault();
     this.props.signIn(this.state);
-    return (<Redirect to="/" />)
-  }
-
-  componentWillReceiveProps(nextProps) {
-    console.log(nextProps)
-    if (nextProps.username != null) {
-      return (<Redirect to = '/' />)
-    }
   }
 
   render() {
@@ -53,7 +46,7 @@ class SignIn extends Component {
             { authError ? <p>{authError}</p> : null }
           </div>
         </form>
-        <button onClick={console.log(this.props.redux)}>Redux</button>
+        <button onClick={ () => console.log(this.props.redux) }>Redux</button>
       </div>
     )
   }
