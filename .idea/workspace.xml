@@ -21,9 +21,8 @@
   <component name="ChangeListManager">
     <list default="true" id="d0c10668-9459-466f-8e53-748e2eedcc4d" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/trender-ui/src/actions/signIn.js" beforeDir="false" afterPath="$PROJECT_DIR$/trender-ui/src/actions/signIn.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/trender-ui/src/components/auth/SignIn.js" beforeDir="false" afterPath="$PROJECT_DIR$/trender-ui/src/components/auth/SignIn.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/trender-ui/src/reducers/authReducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/trender-ui/src/reducers/authReducer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/trender-service/src/main/java/eu/marcellofabbri/trender/controller/ChartController.java" beforeDir="false" afterPath="$PROJECT_DIR$/trender-service/src/main/java/eu/marcellofabbri/trender/controller/ChartController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/trender-service/src/main/java/eu/marcellofabbri/trender/repository/ChartRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/trender-service/src/main/java/eu/marcellofabbri/trender/repository/ChartRepository.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

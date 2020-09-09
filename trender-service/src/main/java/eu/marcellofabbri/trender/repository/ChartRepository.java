@@ -6,6 +6,6 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 
 public interface ChartRepository extends CrudRepository<Chart, Long> {
-  @Query("FROM #{#entityName} WHERE username=:username")
-  public Iterable<Chart> findByUsername(String username);
+  @Query("FROM #{#entityName} WHERE userID=:userID")
+  public Iterable<Chart> findByUserID(long userID);
 }
