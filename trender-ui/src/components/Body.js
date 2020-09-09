@@ -14,6 +14,7 @@ import emptyChartImage from '../empty-chart.png';
 import selectChartImage from '../select-chart.png';
 import TypeOfView from './TypeOfView.js';
 import User from './User.js';
+import {Redirect} from 'react-router-dom';
 
 class Body extends Component {
   constructor(props) {
@@ -21,7 +22,7 @@ class Body extends Component {
     this.handler = this.handler.bind(this);
     this.state = {
         isLoaded: false,
-        //items: [],
+        loggedIn: false,
         reload: false,
         selectedChartTarget: 0
       };
@@ -36,8 +37,10 @@ class Body extends Component {
   componentDidMount() {
     this.props.retrieveData();
     this.props.retrieveCharts();
+    let loggedInStatus = this.props.loggedIn;
     this.setState({
-      isLoaded: true
+      isLoaded: true,
+      loggedIn: loggedInStatus
     })
   }
 
@@ -46,8 +49,11 @@ class Body extends Component {
     const selectedChartId = nextProps.selectedChartId;
     const chosenCharts = charts.filter(chart => chart.id == selectedChartId);
     const target = chosenCharts.length > 0 ? chosenCharts[0].target : '0';
+
+    const loggedInStatus = nextProps.loggedIn;
     this.setState({
-      selectedChartTarget: target
+      selectedChartTarget: target,
+      loggedIn: loggedInStatus
     })
   }
 
@@ -94,11 +100,16 @@ class Body extends Component {
 
     let {
       isLoaded,
+      loggedIn,
       reload
       } = this.state;
 
     if (!isLoaded) {
       return (<div> Loading... </div>)
+    } else if (loggedIn == false) {
+      return (
+        <Redirect to="/signin"/>
+      )
     } else {
       return (
         <div className="Body">
@@ -153,6 +164,7 @@ class Body extends Component {
 
 const mapStateToProps = (state, ownProps) => {
   return {
+    loggedIn: state.auth.loggedIn,
     items: state.main.items,
     charts: state.main.charts,
     selectedChartId: state.main.selectedChartId,

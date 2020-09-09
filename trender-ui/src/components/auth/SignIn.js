@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { signIn } from '../../actions/signIn.js';
+import { Redirect, useHistory } from "react-router-dom";
 
 class SignIn extends Component {
   state = {
@@ -15,14 +16,24 @@ class SignIn extends Component {
   }
 
   handleSubmit = (e) => {
-    e.preventDefault();
-    console.log('STATE FOR NOW', this.state)
-    this.props.signIn(this.state)
+    this.props.signIn(this.state);
+    return (<Redirect to="/" />)
+  }
+
+  componentWillReceiveProps(nextProps) {
+    console.log(nextProps)
+    if (nextProps.username != null) {
+      return (<Redirect to = '/' />)
+    }
   }
 
   render() {
-    const { authError } = this.props;
-    return(
+    const { authError, username } = this.props;
+    return username != null ?
+    (
+      <Redirect to="/" />
+    ) :
+    (
       <div className="container">
         <form onSubmit={ this.handleSubmit } className="white">
           <h5 className="grey-text text-darken-3">Sign In</h5>
@@ -46,9 +57,10 @@ class SignIn extends Component {
   }
 }
 
-const mapStateToProps = (state) => {
+const mapStateToProps = (state, ownProps) => {
   return {
-    authError: state.auth.authError
+    authError: state.auth.authError,
+    username: state.auth.username
   }
 }
 
