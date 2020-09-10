@@ -1,3 +1,32 @@
 .SignIn {
   background-color: #DEDAF7;
 }
+
+.input-field {
+  display:block;
+  height:50px;
+  width:90%;
+  margin:0 auto;
+  border:none;
+  &::placeholder{
+    -webkit-transform:translateY(0px);
+      transform:translateY(0px);
+    -webkit-transition:.5s;
+      transition:.5s;
+  }
+  &:hover,
+  &:focus,
+  &:active:focus{
+    color:#ff5722;
+    outline:none;
+    border-bottom:1px solid #ff5722;
+    &::placeholder{
+      color:#ff5722;
+      position:relative;
+      -webkit-transform:translateY(-20px);
+      transform:translateY(-20px);
+
+    }
+  }
+}
+

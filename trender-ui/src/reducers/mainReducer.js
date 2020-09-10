@@ -53,6 +53,12 @@ const mainReducer = (state = initState, action) => {
         }
       }
       break;
+    case 'RESET_SELECTED_CHART':
+      return {
+        ...state,
+        selectedChartId: 0
+      }
+      break;
   }
   return state;
 }

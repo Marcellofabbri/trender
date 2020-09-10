@@ -81,4 +81,16 @@ public class MeasurementController {
 
         return new ResponseEntity<>("Record has been deleted", HttpStatus.OK);
     }
+
+    @DeleteMapping("/measurements")
+    public ResponseEntity<String> deleteAllMeasurementsByChart(@RequestParam("chartID") long chartID) {
+        try {
+            measurementRepository.deleteAllMeasurementsByChartID(chartID);
+        } catch(Exception e) {
+            System.out.println(e);
+            return new ResponseEntity<>("Failed to delete", HttpStatus.EXPECTATION_FAILED);
+        }
+
+        return new ResponseEntity<>("Record has been deleted", HttpStatus.OK);
+    }
 }

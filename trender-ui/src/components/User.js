@@ -8,8 +8,8 @@ class User extends Component {
   render() {
     return(
       <div className="user">
-        <h5>Logged in as { this.props.username }</h5>
-        <button onClick={ this.props.signOut }>Log out</button>
+        <h5 id="sentence">Logged in as </h5><h3 id="nameOfUser">{ this.props.username }</h3>
+        <button id="logout" onClick={ this.props.signOut }>Log out</button>
       </div>
     )
   }

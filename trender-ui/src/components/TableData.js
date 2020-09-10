@@ -23,6 +23,10 @@ class TableData extends Component {
     });
   }
 
+  submitDeletion = (id) => {
+    this.props.action(id);
+  }
+
   render() {
     const { data, action, unit , viewLapse, viewWhat } = this.props;
     var epochSeconds = parseInt((new Date().getTime())/1000);
@@ -53,7 +57,7 @@ class TableData extends Component {
             <td className="buttonCell"><button
               id="minus"
               name={ row.id }
-              onClick={ () => action(rowId) }
+              onClick={ () => this.submitDeletion(rowId) }
               >
               ꟷ
               </button>

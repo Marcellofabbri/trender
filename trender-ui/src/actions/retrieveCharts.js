@@ -8,9 +8,9 @@ const retrieveChartsAction = (json) => {
   }
 }
 
-export const retrieveCharts = (userID) => {
+export const retrieveCharts = () => {
   return (dispatch) => {
-    fetch('/api/charts')
+    fetch("/api/charts")
       .then(results => results.json())
       .then((json) => { dispatch(retrieveChartsAction(json));
       })

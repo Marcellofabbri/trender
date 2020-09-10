@@ -32,7 +32,6 @@ class ChartSheet extends Component {
 
   componentWillReceiveProps(nextProps) {
     this.createOptions(nextProps.charts);
-    console.log('ALREADYSELECTEDCHART', nextProps.alreadySelectedChart)
     this.setState({
       selectedChart: nextProps.alreadySelectedChart,
       selectedChartId: nextProps.alreadySelectedChart.id
@@ -86,11 +85,17 @@ class ChartSheet extends Component {
       this.setState({
         selectedChart: selectedChart
       });
+
     }
 
   selectOneChart = (e) => {
     let selectedChartId = e.value;
     this.arrangeChartSelection(selectedChartId);
+  }
+
+  // after deleting a chart, automatically select select chart 0
+  selectChartAfterDeletion = () => {
+    this.props.selectChart(0);
   }
 
   editableDetails = () => {
@@ -101,7 +106,8 @@ class ChartSheet extends Component {
       selectedChartTitle: selectedChart.title,
       selectedChartUnitName: selectedChart.unitName,
       selectedChartTarget: selectedChart.target,
-      selectedChartDescription: selectedChart.description
+      selectedChartDescription: selectedChart.description,
+      selectedChartUserID: selectedChart.userID
     }
     return editableDetails;
   }
@@ -121,13 +127,26 @@ class ChartSheet extends Component {
     window.location.reload(false);
   }
 
-  deleteChart = (id) => {
+  wipeChart = async (chartID) => {
+    axios.delete(`/api/measurements?chartID=${chartID}`)
+      .then(response => console.log(response))
+      .catch((err) => {
+        console.log('ERROR WHEN WIPING DATA FROM CHART', err)
+      });
+  }
 
+  deleteChartFromDatabase = async (id) => {
     axios.delete(`/api/charts/${id}`)
       .then(response => console.log(response))
       .catch((err) => {
         console.log('ERROR WHEN DELETING CHARTS FROM DATABASE', err)
       });
+  }
+
+  deleteChart = async (id) => {
+    await this.wipeChart(id);
+    await this.deleteChartFromDatabase(id);
+    this.selectChartAfterDeletion();
     this.refreshPage();
   }
 
@@ -140,7 +159,8 @@ class ChartSheet extends Component {
       )
     } else {
       let selectedChart = this.state.selectedChart;
-      let selectedChartId = this.state.selectedChartId;
+      let selectedChartId = this.props.selectedChartId;
+      let userID = this.props.userID
       return(
         <div className='ChartSheet'>
           <AddNewChartForm
@@ -148,13 +168,14 @@ class ChartSheet extends Component {
             editableDetails={ this.state.edit == true ? this.editableDetails() : null }
             selectNewChart={ this.arrangeChartSelection }
             refreshPage= { this.refreshPage }
+            userID={ userID }
             />
           <button id="goToAddChartForm" onClick={ this.revealForm }>NEW CHART</button>
-          { this.state.selectedChartId == 0 ?
+          { this.props.selectedChartId == 0 ?
             null :
             <div id="editDeleteButtonsDiv">
             <button id="editChart" onClick={ this.revealEditForm }>EDIT CHART</button>
-            <button id="deleteChart" onClick={() => { if (window.confirm('Are you sure you wish to delete this item?')) this.deleteChart(selectedChartId) }}>×</button>
+            <button id="deleteChart" onClick={() => { if (window.confirm('Are you sure you wish to delete this chart and its data?')) this.deleteChart(selectedChartId) }}>×</button>
             </div>
           }
           { this.state.chartsInDatabase.length ?
@@ -190,7 +211,8 @@ class ChartSheet extends Component {
 
 const mapStateToProps = (state, ownProps) => {
   return {
-    selectChartId: state.main.selectedChartId
+    selectedChartId: state.main.selectedChartId,
+    userID: state.auth.userID
   }
 }
 

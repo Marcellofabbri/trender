@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import { connect } from 'react-redux';
 import '../style/Specs.css';
 
 class Specs extends Component {
@@ -37,7 +38,7 @@ class Specs extends Component {
   }
 
   render() {
-    const { items } = this.props;
+    const { items, viewLapse } = this.props;
     let state = this.state;
     return (
       <div className="specs">
@@ -73,4 +74,10 @@ class Specs extends Component {
   }
 }
 
-export default Specs;
+const mapStateToProps = (state, ownProps) => {
+  return {
+    viewLapse: state.main.viewLapse
+  }
+}
+
+export default connect(mapStateToProps, null)(Specs);

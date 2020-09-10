@@ -4,7 +4,15 @@
   height: 25vh;
 }
 
-#loginForm {
-  padding-top: auto;
-  padding-bottom: auto;
+#sentence {
+  padding-top: 4vh;
+  text-align: center;
+}
+
+#nameOfUser {
+  color: #FF5454;
+}
+
+#logout {
+  border-radius: 7px;
 }

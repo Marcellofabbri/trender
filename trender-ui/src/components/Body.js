@@ -44,10 +44,27 @@ class Body extends Component {
     })
   }
 
+  getChartIds = (charts) => {
+    let a = [];
+    a = charts.map(chart => a.push(chart.id));
+    return a;
+  }
+
+  ownCharts = (charts) => {
+    let ownCharts = charts.filter(chart => chart.userID == this.props.userID);
+    return ownCharts;
+  }
+
+  ownItems = (items, ownCharts) => {
+    let ownChartsIds = this.getChartIds(ownCharts);
+    let ownItems = items.filter(item => ownChartsIds.includes(item.chartID));
+    return ownItems;
+  }
+
   componentWillReceiveProps(nextProps) {
     const charts = nextProps.charts;
     const selectedChartId = nextProps.selectedChartId;
-    const chosenCharts = charts.filter(chart => chart.id == selectedChartId);
+    const chosenCharts = charts.length > 0 ? charts.filter(chart => chart.id == selectedChartId) : [];
     const target = chosenCharts.length > 0 ? chosenCharts[0].target : '0';
 
     const loggedInStatus = nextProps.loggedIn;
@@ -61,7 +78,7 @@ class Body extends Component {
     axios.delete(`/api/measurement/${id}`)
       .then(response => {
         if (response.status == 200) {
-          this.retrievedData();
+          this.props.retrieveData();
         }
       })
       .catch(error => {
@@ -86,16 +103,15 @@ class Body extends Component {
     }
   }
 
-
-
   render() {
     const { items, charts, selectedChartId, selectedChartUnit } = this.props;
-    console.log('PROPS', this.props, 'CHARTS', this.props.charts)
+    const ownCharts = this.ownCharts(charts);
+    const ownItems = this.ownItems(items, ownCharts);
     const sortedItems = items.sort((a, b) => a.createdAt > b.createdAt ? 1 : -1);
     const filteredItems = this.filterBySelectedId(sortedItems, selectedChartId);
     const reversedItems = filteredItems.sort((a, b) => a.createdAt < b.createdAt ? 1 : -1);
     const unit = filteredItems.length > 0 ? filteredItems[0].unit : '';
-    const selectedCharts = charts.length > 0 ? (charts.filter(chart => chart.id == selectedChartId)) : [];
+    const selectedCharts = ownCharts.length > 0 ? (ownCharts.filter(chart => chart.id == selectedChartId)) : [];
     const selectedChart = selectedCharts.length == 0 ? this.selectedChartByDefault : selectedCharts[0];
 
     let {
@@ -129,7 +145,7 @@ class Body extends Component {
                   }
                 </td>
                 <td>
-                  <ChartSheet charts={ charts } alreadySelectedChart={ selectedChart } />
+                  <ChartSheet charts={ ownCharts } alreadySelectedChart={ selectedChart } />
                 </td>
               </tr>
               <tr>
@@ -165,6 +181,7 @@ class Body extends Component {
 const mapStateToProps = (state, ownProps) => {
   return {
     loggedIn: state.auth.loggedIn,
+    userID: state.auth.userID,
     items: state.main.items,
     charts: state.main.charts,
     selectedChartId: state.main.selectedChartId,

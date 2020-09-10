@@ -22,11 +22,11 @@ public class ChartRequestCreate {
 
   @JsonCreator
   public ChartRequestCreate(@JsonProperty("createdAt") OffsetDateTime createdAt,
-                                  @JsonProperty("title") String title,
-                                  @JsonProperty("unitName") String unitName,
-                                  @JsonProperty("description") String description,
-                                  @JsonProperty("target") long target,
-                                  @JsonProperty("userID") long userID) {
+                            @JsonProperty("title") String title,
+                            @JsonProperty("unitName") String unitName,
+                            @JsonProperty("description") String description,
+                            @JsonProperty("target") long target,
+                            @JsonProperty("userID") long userID) {
     this.createdAt = createdAt;
     this.title = title;
     this.unitName = unitName;

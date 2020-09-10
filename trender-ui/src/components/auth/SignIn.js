@@ -3,6 +3,8 @@ import { connect } from 'react-redux';
 import { signIn } from '../../actions/signIn.js';
 import { Redirect, useHistory } from "react-router-dom";
 import { SignUp } from './SignUp.js';
+import { resetSelectedChart } from '../../actions/resetSelectedChart.js';
+import '../../style/auth/SignIn.css';
 
 class SignIn extends Component {
   state = {
@@ -19,6 +21,7 @@ class SignIn extends Component {
   handleSubmit = (e) => {
     e.preventDefault();
     this.props.signIn(this.state);
+    this.props.resetSelectedChart();
   }
 
   render() {
@@ -32,12 +35,10 @@ class SignIn extends Component {
         <form onSubmit={ this.handleSubmit } className="white">
           <h5 className="grey-text text-darken-3">Sign In</h5>
           <div className="input-field">
-            <label htmlFor="username">Username</label>
-            <input type="text" id="username" onChange={ this.handleChange } />
+            <input type="text" id="username" onChange={ this.handleChange } placeholder="Username" />
           </div>
           <div className="input-field">
-            <label htmlFor="password">Password</label>
-            <input type="password" id="password" onChange={ this.handleChange } />
+            <input type="password" id="password" onChange={ this.handleChange } placeholder="Password" />
           </div>
           <div className="input-field">
             <button>Log In</button>
@@ -46,7 +47,6 @@ class SignIn extends Component {
             { authError ? <p>{authError}</p> : null }
           </div>
         </form>
-        <button onClick={ () => console.log(this.props.redux) }>Redux</button>
       </div>
     )
   }
@@ -62,7 +62,8 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    signIn: (credentials) => dispatch(signIn(credentials))
+    signIn: (credentials) => dispatch(signIn(credentials)),
+    resetSelectedChart: () => dispatch(resetSelectedChart())
   }
 }
 

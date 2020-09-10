@@ -25,7 +25,7 @@ import java.util.Optional;
 @RequestMapping("/api")
 public class ChartController {
 
-  ChartAssembler chartAssembler;
+  ChartAssembler chartAssembler = new ChartAssembler();
 
   @Autowired
   ChartRepository chartRepository;
@@ -59,8 +59,9 @@ public class ChartController {
   }
 
   @PutMapping("/charts/{id}")
-  public ResponseEntity<Chart> updateChart(@PathVariable("id") Long id, @RequestBody ChartRequestCreate chartRequestCreate) {
+  public ResponseEntity<Chart> updateChart(@PathVariable("id") long id, @RequestBody ChartRequestCreate chartRequestCreate) {
 
+    System.out.println(chartRequestCreate);
     Chart chart = chartAssembler.requestCreateToDomainObject(chartRequestCreate);
     Optional<Chart> chartData = chartRepository.findById(id);
     if (chartData.isPresent()) {
@@ -70,6 +71,7 @@ public class ChartController {
       savedChart.setUnitName(chart.getUnitName());
       savedChart.setDescription(chart.getDescription());
       savedChart.setTarget(chart.getTarget());
+      savedChart.setUserID(chart.getUserID());
 
       Chart updatedChart = chartRepository.save(savedChart);
       return new ResponseEntity<>(updatedChart, HttpStatus.OK);

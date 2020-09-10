@@ -9,7 +9,8 @@ class AddNewChartForm extends Component {
     title: '',
     unitName: '',
     description: '',
-    target: null
+    target: null,
+    userID: null
   }
 
   componentWillReceiveProps(nextProps) {
@@ -21,7 +22,8 @@ class AddNewChartForm extends Component {
         title: editableDetails.selectedChartTitle,
         unitName: editableDetails.selectedChartUnitName,
         description: editableDetails.selectedChartDescription,
-        target: editableDetails.selectedChartTarget
+        target: editableDetails.selectedChartTarget,
+        userID: editableDetails.selectedChartUserID
       });
     }
   }
@@ -33,7 +35,8 @@ class AddNewChartForm extends Component {
       title: '',
       unitName: '',
       description: '',
-      target: null
+      target: null,
+      userID: null
     })
     this.props.hideForm();
   }
@@ -44,8 +47,9 @@ class AddNewChartForm extends Component {
       createdAt: chosenDate,
       title: this.state.title,
       unitName: this.state.unitName,
-      target: this.state.target,
-      description: this.state.description
+      target: Math.round(this.state.target),
+      description: this.state.description,
+      userID: this.props.userID
     }
     axios.post('/api/charts', payload)
       .then(response => {
@@ -56,6 +60,7 @@ class AddNewChartForm extends Component {
         console.log('R', response);
         this.props.selectNewChart(response.data.id);
       })
+      .then(this.props.selectNewChart(0))
       .catch(error => {
         console.log(error)
       })
@@ -67,9 +72,10 @@ class AddNewChartForm extends Component {
       title: this.state.title,
       unitName: this.state.unitName,
       target: this.state.target,
-      description: this.state.description
+      description: this.state.description,
+      userID: this.props.userID
     }
-    console.log(updatingId)
+    console.log(updatingId, payload)
     axios.put("/api/charts/" + updatingId, payload)
       .then(response => {
         console.log('RESPONSE', response);
@@ -85,10 +91,8 @@ class AddNewChartForm extends Component {
     }
 
   render() {
-    const { hideForm, editableDetails, selectNewChart, refreshPage } = this.props;
-    console.log(this.props)
+    const { hideForm, editableDetails, selectNewChart, refreshPage, userID } = this.props;
     const updatingId = this.state.id;
-    console.log('UPDATINGID', updatingId);
     return(
       <div className="AddNewChartForm" id="AddNewChartForm">
         <div class="modal-content">
@@ -98,15 +102,15 @@ class AddNewChartForm extends Component {
             <table id="chartsTable">
               <tr className="chartSpecsRow">
                 <th className="addChartSheetColumnLeft">CHART</th>
-                <th className="addChartSheetColumnRight"><input type="text" name="title" placeholder="TITLE" className='newChartInput' value={ this.state.title } onChange={ this.onChangeHandler }/></th>
+                <th className="addChartSheetColumnRight"><input type="text" name="title" placeholder="max 20 characters" className='newChartInput' value={ this.state.title } onChange={ this.onChangeHandler } maxLength="20"/></th>
               </tr>
               <tr className="chartSpecsRow">
                 <th className="addChartSheetColumnLeft">UNIT</th>
-                <th className="addChartSheetColumnRight"><input type="text" name="unitName" placeholder="UNIT" className='newChartInput' value={ this.state.unitName } onChange={ this.onChangeHandler } /></th>
+                <th className="addChartSheetColumnRight"><input type="text" name="unitName" placeholder="max 20 characters" className='newChartInput' value={ this.state.unitName } onChange={ this.onChangeHandler } maxLength="20"/></th>
               </tr>
               <tr className="chartSpecsRow">
                 <th className="addChartSheetColumnLeft">TARGET</th>
-                <th className="addChartSheetColumnRight"><input type="text" name="target" placeholder="TARGET" className='newChartInput' value={ this.state.target } onChange={ this.onChangeHandler } /></th>
+                <th className="addChartSheetColumnRight"><input type="number" name="target" placeholder="whole numbers only (10 digits max)" className='newChartInput' value={ this.state.target } onChange={ this.onChangeHandler } min="-9999999999" max="9999999999"/></th>
               </tr>
               <tr className="chartSpecsRow">
                 <th className="addChartSheetColumnLeft">DESCRIPTION</th>
