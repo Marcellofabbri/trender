@@ -1,5 +1,6 @@
 .TableData {
   background-color: #AED4FF;
+  border-radius: 1vh;
 }
 
 .row {
@@ -42,4 +43,14 @@ table.tabledata {
 .cell {
   width: 163px !important;
   background-color: #AEBFFF;
+}
+
+#plus:hover, #minus:hover {
+  background-color: #DEDAF7;
+  box-shadow: inset 80px 0 0 0 #F6EAAA;
+}
+
+#send:hover {
+  background-color: #DEDAF7;
+  box-shadow: inset 80px 0 0 0 green;
 }

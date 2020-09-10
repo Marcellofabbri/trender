@@ -124,54 +124,53 @@ class Body extends Component {
       return (<div> Loading... </div>)
     } else if (loggedIn == false) {
       return (
-        <Redirect to="/signin"/>
+        <Redirect to="/start"/>
       )
     } else {
       return (
         <div className="Body">
           <table className="Grid">
             <tbody>
-              <tr>
+              <tr className="gridRow">
                 <td>
-                  <TypeOfView />
+                  <TypeOfView id="typeOfView"/>
                 </td>
                 <td>
                   {
                     filteredItems.length > 0 ?
-                    <MainChart data={ filteredItems } selectedChart={ selectedChart }  /> :
+                    <MainChart id="mainChart" data={ filteredItems } selectedChart={ selectedChart }  /> :
                     filteredItems.length == 0 && selectedChartId == 0 ?
                     <div className="NoChart"><img className="mainChartPlaceholders" src={ selectChartImage } /></div> :
                     <div className="NoChart"><img className="mainChartPlaceholders" src={ emptyChartImage } /></div>
                   }
                 </td>
                 <td>
-                  <ChartSheet charts={ ownCharts } alreadySelectedChart={ selectedChart } />
+                  <ChartSheet id="chartSheet" charts={ ownCharts } alreadySelectedChart={ selectedChart } />
                 </td>
               </tr>
-              <tr>
+              <tr className="gridRow">
                 <td>
-                  <User />
+                  <User id="user"/>
                 </td>
                 <td>
                   {
                   filteredItems.length > 0 ?
-                  <TableData data={ reversedItems } action={ this.onDeleteEntry } unit={ unit } /> :
+                  <TableData className="tableData" data={ reversedItems } action={ this.onDeleteEntry } unit={ unit } /> :
                   filteredItems.length == 0 && selectedChartId == 0 ?
                   <TableData className="NoTableData"/> :
-                  <TableData data={[]} action={ this.onDeleteEntry } unit={ selectedChart.unitName } />
+                  <TableData className="tableData" data={[]} action={ this.onDeleteEntry } unit={ selectedChart.unitName } />
                   }
                 </td>
                 <td>
                   {
                   filteredItems.length > 0 ?
-                  <Specs data={ reversedItems } /> :
+                  <Specs className="Specs" data={ reversedItems } /> :
                   <Specs className="NoSpecs" data={[]}/>
                   }
                 </td>
               </tr>
             </tbody>
           </table>
-          <button onClick={ () => console.log(this.props.reducer) } >REDUX</button>
         </div>
       );
     }

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import { Redirect } from 'react-router-dom';
+import '../../style/auth/SignIn.css';
 
 class SignUp extends Component {
   state = {
@@ -74,24 +75,24 @@ class SignUp extends Component {
     ):
     (
     <div className="container">
+      <div className="signUp">
         <form onSubmit={ this.handleSubmit } className="white">
-          <h5 className="grey-text text-darken-3">Sign Up</h5>
+          <h5 id="signUpTitle">Sign Up</h5>
           <div className="input-field">
-            <label htmlFor="username">Username</label>
-            <input type="text" id="username" placeholder="type your username" onChange={ this.handleChange } />
+            <input type="text" id="username" placeholder="Username" onChange={ this.handleChange } maxLength="20"/>
           </div>
           <div className="input-field">
-            <label htmlFor="password">Password</label>
-            <input type="password" id="password" placeholder="type your password" onChange={ this.handleChange } />
+            <input type="password" id="password" placeholder="Password" onChange={ this.handleChange } maxLength="20"/>
           </div>
           <div className="input-field">
-            <input type="password" id="confirmation" placeholder="confirm your password" onChange={ this.handleChange } />
+            <input type="password" id="confirmation" placeholder="Confirm your password" onChange={ this.handleChange } maxLength="20"/>
           </div>
           <div className="input-field">
-            <button type="submit">Sign Up</button>
+            <button id="sign" type="submit">Sign Up</button>
           </div>
         </form>
-        <p>{ this.state.error }</p>
+        <p id="errorMessage">{ this.state.error }</p>
+      </div>
       </div>
     )
   }

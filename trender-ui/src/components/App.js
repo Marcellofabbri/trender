@@ -5,6 +5,7 @@ import Start from './Start';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import SignIn from './auth/SignIn.js';
 import SignUp from './auth/SignUp.js';
+import '../style/App.css';
 
 const App = () => {
 

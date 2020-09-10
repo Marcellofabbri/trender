@@ -1,11 +1,25 @@
 .ChartSheet {
-  background-color: #7D67CB;
+  background-color: #D1A8EC;
   height: 60vh;
   width: 40vh;
+  border-radius: 2vh;
+}
+
+button {
+  -webkit-transition: all ease 0.8s;
+  -moz-transition: all ease 0.8s;
+  transition: all ease 0.8s;
 }
 
 #goToAddChartForm {
   border-radius: 7px;
+  height: 3vh;
+  font-weight: 600;
+}
+
+#goToAddChartForm:hover, #editChart:hover, #deleteChart:hover, #backToChartSheet:hover, #updateChart:hover {
+  background-color: #D2F5E2;
+  box-shadow: inset 100px 0 0 0 #F6EAAA;
 }
 
 .chartSheetElement {
@@ -14,6 +28,7 @@
   font-weight: 400;
   text-align: center;
   line-height: 48px;
+  border-radius: 5px;
 }
 
 #chartSelectionBox {
@@ -35,12 +50,14 @@ table#chartsTable {
 
 .chartSheetColumnLeft {
   width: 20%;
-  background-color: #A091D8;
+  background-color: #DEDAF7;
+  border-radius: 5px;
 }
 
 .chartSheetColumnRight {
   width: 80%;
-  background-color: #A091D8;
+  background-color: #DEDAF7;
+  border-radius: 5px;
 }
 
 table#descriptionTable {
@@ -57,17 +74,19 @@ table#descriptionTable {
 
 #descriptionField {
   font-weight: 400;
-  background-color: #A091D8;
+  background-color: #DEDAF7;
   text-align: start;
   padding: 2px;
   word-wrap: anywhere;
   overflow-x: hidden;
   overflow-y: auto;
-  height: 185px;
+  height: 20vh;
+  border-radius: 5px;
 }
 
 .chartSheetColumnLast {
-  background-color: #A091D8;
+  background-color: #DEDAF7;
+  border-radius: 5px;
 }
 
 #editDeleteButtonsDiv {
@@ -76,7 +95,7 @@ table#descriptionTable {
 
 #deleteChart {
   border-radius: 20px;
-  height: 25px;
+  height: 21px;
   font-weight: 900;
   color: red;
 }

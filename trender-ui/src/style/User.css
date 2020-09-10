@@ -1,11 +1,19 @@
 .user {
   background-color: #DEDAF7;
   width: 40vh;
-  height: 25vh;
+  height: 23.5vh;
+  border-radius: 2vh;
+}
+
+button {
+  -webkit-transition: all ease 0.8s;
+  -moz-transition: all ease 0.8s;
+  transition: all ease 0.8s;
 }
 
 #sentence {
-  padding-top: 4vh;
+  padding-top: 3vh;
+  paddign-bottom: 0vh;
   text-align: center;
 }
 
@@ -14,5 +22,19 @@
 }
 
 #logout {
+  font-size: 11px;
   border-radius: 7px;
+  height: 4vh;
+  width: 10vh;
+  font-weight: 600;
+}
+
+#logout:hover {
+  background-color: #DEDAF7;
+  box-shadow: inset 80px 0 0 0 #F6EAAA;
+}
+
+.container {
+  height: 100%;
+  background-color: #8D3ECE;
 }

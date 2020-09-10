@@ -1,32 +1,64 @@
-.SignIn {
+
+.signIn, .signUp {
+  border-radius: 2vh;
   background-color: #DEDAF7;
+  height: 30%;
+  width: 30%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.signUp {
+  height: 35%;
+}
+
+#signInTitle, #signUpTitle {
+  padding-top: 1vh;
+}
+
+#errorMessage {
+  color: red;
+  padding-bottom: 4vh;
+}
+
+.container {
+  background-color: #8f96c6;
+  height: 100%;
+  width: 100%;
+  position: absolute;
+}
+
+button {
+  -webkit-transition: all ease 0.8s;
+  -moz-transition: all ease 0.8s;
+  transition: all ease 0.8s;
+}
+
+#sign {
+  font-size: 11px;
+  border-radius: 7px;
+  height: 4vh;
+  width: 10vh;
+  font-weight: 600;
+}
+
+#sign:hover {
+  background-color: #DEDAF7;
+  box-shadow: inset 80px 0 0 0 #71F06F;
 }
 
 .input-field {
-  display:block;
-  height:50px;
-  width:90%;
-  margin:0 auto;
-  border:none;
-  &::placeholder{
-    -webkit-transform:translateY(0px);
-      transform:translateY(0px);
-    -webkit-transition:.5s;
-      transition:.5s;
-  }
-  &:hover,
-  &:focus,
-  &:active:focus{
-    color:#ff5722;
-    outline:none;
-    border-bottom:1px solid #ff5722;
-    &::placeholder{
-      color:#ff5722;
-      position:relative;
-      -webkit-transform:translateY(-20px);
-      transform:translateY(-20px);
+  margin-top: 1vh;
+  margin-bottom: 2vh;
+}
 
-    }
-  }
+#username, #password, #confirmation {
+  height: 3vh;
+  border: none;
+  border-radius: 5px;
+}
+
+#username:focus, #password:focus {
+  outline: none;
 }
 

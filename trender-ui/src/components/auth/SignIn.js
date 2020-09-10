@@ -32,21 +32,23 @@ class SignIn extends Component {
     ) :
     (
       <div className="container">
-        <form onSubmit={ this.handleSubmit } className="white">
-          <h5 className="grey-text text-darken-3">Sign In</h5>
-          <div className="input-field">
-            <input type="text" id="username" onChange={ this.handleChange } placeholder="Username" />
-          </div>
-          <div className="input-field">
-            <input type="password" id="password" onChange={ this.handleChange } placeholder="Password" />
-          </div>
-          <div className="input-field">
-            <button>Log In</button>
-          </div>
-          <div>
-            { authError ? <p>{authError}</p> : null }
-          </div>
-        </form>
+        <div className="signIn">
+          <form onSubmit={ this.handleSubmit } className="white">
+            <h5 id="signInTitle">Sign In</h5>
+            <div className="input-field">
+              <input type="text" id="username" onChange={ this.handleChange } placeholder="Username" />
+            </div>
+            <div className="input-field">
+              <input type="password" id="password" onChange={ this.handleChange } placeholder="Password" />
+            </div>
+            <div className="input-field">
+              <button id="sign">Log In</button>
+            </div>
+            <div>
+              { authError ? <p id="errorMessage">{authError}</p> : null }
+            </div>
+          </form>
+        </div>
       </div>
     )
   }

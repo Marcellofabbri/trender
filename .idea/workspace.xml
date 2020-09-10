@@ -20,24 +20,28 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d0c10668-9459-466f-8e53-748e2eedcc4d" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/trender-ui/src/actions/resetSelectedChart.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/trender-ui/src/actions/wipeAuthError.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/trender-ui/src/style/App.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/trender-ui/src/style/auth/Start.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/trender-service/src/main/java/eu/marcellofabbri/trender/controller/ChartController.java" beforeDir="false" afterPath="$PROJECT_DIR$/trender-service/src/main/java/eu/marcellofabbri/trender/controller/ChartController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/trender-service/src/main/java/eu/marcellofabbri/trender/controller/MeasurementController.java" beforeDir="false" afterPath="$PROJECT_DIR$/trender-service/src/main/java/eu/marcellofabbri/trender/controller/MeasurementController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/trender-service/src/main/java/eu/marcellofabbri/trender/model/dto/ChartRequestCreate.java" beforeDir="false" afterPath="$PROJECT_DIR$/trender-service/src/main/java/eu/marcellofabbri/trender/model/dto/ChartRequestCreate.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/trender-service/src/main/java/eu/marcellofabbri/trender/repository/MeasurementRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/trender-service/src/main/java/eu/marcellofabbri/trender/repository/MeasurementRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/trender-ui/src/actions/retrieveCharts.js" beforeDir="false" afterPath="$PROJECT_DIR$/trender-ui/src/actions/retrieveCharts.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/trender-ui/src/actions/retrieveData.js" beforeDir="false" afterPath="$PROJECT_DIR$/trender-ui/src/actions/retrieveData.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/trender-ui/src/components/AddNewChartForm.js" beforeDir="false" afterPath="$PROJECT_DIR$/trender-ui/src/components/AddNewChartForm.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/trender-ui/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/trender-ui/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/trender-ui/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/trender-ui/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/trender-ui/src/components/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/trender-ui/src/components/App.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/trender-ui/src/components/Body.js" beforeDir="false" afterPath="$PROJECT_DIR$/trender-ui/src/components/Body.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/trender-ui/src/components/ChartSheet.js" beforeDir="false" afterPath="$PROJECT_DIR$/trender-ui/src/components/ChartSheet.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/trender-ui/src/components/Specs.js" beforeDir="false" afterPath="$PROJECT_DIR$/trender-ui/src/components/Specs.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/trender-ui/src/components/TableData.js" beforeDir="false" afterPath="$PROJECT_DIR$/trender-ui/src/components/TableData.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/trender-ui/src/components/PostEntryForm.js" beforeDir="false" afterPath="$PROJECT_DIR$/trender-ui/src/components/PostEntryForm.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/trender-ui/src/components/Start.js" beforeDir="false" afterPath="$PROJECT_DIR$/trender-ui/src/components/Start.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/trender-ui/src/components/User.js" beforeDir="false" afterPath="$PROJECT_DIR$/trender-ui/src/components/User.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/trender-ui/src/components/auth/SignIn.js" beforeDir="false" afterPath="$PROJECT_DIR$/trender-ui/src/components/auth/SignIn.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/trender-ui/src/reducers/mainReducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/trender-ui/src/reducers/mainReducer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/trender-ui/src/components/auth/SignUp.js" beforeDir="false" afterPath="$PROJECT_DIR$/trender-ui/src/components/auth/SignUp.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/trender-ui/src/reducers/authReducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/trender-ui/src/reducers/authReducer.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/trender-ui/src/style/AddNewChartForm.css" beforeDir="false" afterPath="$PROJECT_DIR$/trender-ui/src/style/AddNewChartForm.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/trender-ui/src/style/Body.css" beforeDir="false" afterPath="$PROJECT_DIR$/trender-ui/src/style/Body.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/trender-ui/src/style/ChartSheet.css" beforeDir="false" afterPath="$PROJECT_DIR$/trender-ui/src/style/ChartSheet.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/trender-ui/src/style/MainChart.css" beforeDir="false" afterPath="$PROJECT_DIR$/trender-ui/src/style/MainChart.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/trender-ui/src/style/PostEntryForm.css" beforeDir="false" afterPath="$PROJECT_DIR$/trender-ui/src/style/PostEntryForm.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/trender-ui/src/style/Specs.css" beforeDir="false" afterPath="$PROJECT_DIR$/trender-ui/src/style/Specs.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/trender-ui/src/style/TableData.css" beforeDir="false" afterPath="$PROJECT_DIR$/trender-ui/src/style/TableData.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/trender-ui/src/style/TypeOfView.css" beforeDir="false" afterPath="$PROJECT_DIR$/trender-ui/src/style/TypeOfView.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/trender-ui/src/style/User.css" beforeDir="false" afterPath="$PROJECT_DIR$/trender-ui/src/style/User.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/trender-ui/src/style/auth/SignIn.css" beforeDir="false" afterPath="$PROJECT_DIR$/trender-ui/src/style/auth/SignIn.css" afterDir="false" />
     </list>

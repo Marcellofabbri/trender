@@ -3,8 +3,15 @@
   margin-right: auto !important;
 }
 
-.newRecordInput {
+.newRecordInput, #datePicker {
   width: 150px !important;
   text-align: center !important;
   padding: 0px !important;
+  border-radius: 1vh;
+  border: none;
+  height: 3vh;
+}
+
+#datePicker {
+  border-radius: 5px;
 }

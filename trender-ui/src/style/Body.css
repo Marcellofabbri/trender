@@ -1,5 +1,10 @@
 .App {
   text-align: center;
+  background-color: #F8EFFE;
+}
+
+button {
+  cursor: pointer;
 }
 
 .App-logo {
@@ -40,9 +45,11 @@
 .body {
   display: flex;
   flex-flow: row;
+  background-color: #8f96c6;
 }
 
 .NoChart {
+  border-radius: 2vh;
   background-color: #DEDAF7;
   height: 60vh;
   width: 111vh;
@@ -50,4 +57,19 @@
 
 .mainChartPlaceholders {
   height: 60vh;
+}
+
+#typeOfView, #mainChart, .NoChart, #chartSheet, #user, .tableData, .NoTableData, .Specs, .NoSpecs {
+  margin-left: 3vh;
+  margin-right: 3vh;
+}
+
+.Grid {
+  border-spacing: 2vh 0vh;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+button:hover {
+  opacity: 1;
 }

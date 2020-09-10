@@ -53,6 +53,7 @@ class PostEntryForm extends Component {
             <tr>
               <td className="cell">
                 <DayPickerInput
+                id="datePicker"
                 type="text"
                 name="createdAt"
                 value={ createdAt }
@@ -62,7 +63,7 @@ class PostEntryForm extends Component {
                 formatDate={ formatDate }
                 />
               </td>
-              <td className="cell"><input className="newRecordInput" type="text" name="value" value={ value } onChange={ this.onChangeHandler }/></td>
+              <td className="cell"><input className="newRecordInput" type="number" name="value" value={ value } onChange={ this.onChangeHandler } min="-999999999" max="999999999"/></td>
               <td className="cell"><input className="newRecordInput" type="text" name="unit" value={ unit }/></td>
               <td className="cellButton"><button type="submit" id="send">►</button></td>
             </tr>

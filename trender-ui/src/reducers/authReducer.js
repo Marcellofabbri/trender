@@ -30,6 +30,11 @@ const authReducer = (state = initState, action) => {
       username: null
     }
     break;
+    case 'WIPE_AUTH_ERROR':
+    return {
+      ...state,
+      authError: null
+    }
     default:
     return state;
   }

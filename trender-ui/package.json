@@ -11,6 +11,8 @@
     "chartjs-plugin-annotation": "^0.5.7",
     "date-fns": "^2.15.0",
     "http-proxy-middleware": "^1.0.5",
+    "jQuery": "^1.7.4",
+    "jquery": "^3.5.1",
     "moment": "^2.27.0",
     "moment-range": "^4.0.2",
     "react": "^16.13.1",

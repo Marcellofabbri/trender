@@ -2,12 +2,13 @@
   background-color: #AED4FF;
   height: 23.5vh;
   width: 40vh;
+  border-radius: 2vh;
 }
 
 .specTitle {
   width: 15vh;
   height: 2vh;
-  background-color: #7D67CB;
+  background-color: #AEBFFF;
   font-weight: 600;
 }
 
