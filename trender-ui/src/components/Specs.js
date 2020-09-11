@@ -27,7 +27,7 @@ class Specs extends Component {
     let max = orderedValues[0];
     let min = orderedValues[orderedValues.length - 1];
     let sum = orderedValues.reduce(function(a, b) { return a+b}, 0);
-    let avg = sum/(orderedValues.length);
+    let avg = (sum/(orderedValues.length)).toFixed(2);
     this.setState({
       items,
       avg,

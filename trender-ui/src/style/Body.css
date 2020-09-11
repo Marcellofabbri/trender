@@ -3,6 +3,11 @@
   background-color: #F8EFFE;
 }
 
+
+.gridRow {
+  vertical-align: top;
+}
+
 button {
   cursor: pointer;
 }

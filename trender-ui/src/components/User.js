@@ -9,7 +9,7 @@ class User extends Component {
     return(
       <div className="user">
         <div id="sentenceAndName">
-          <h5 id="sentence">Logged in as </h5><h3 id="nameOfUser">{ this.props.username }</h3>
+          <p id="sentence">Logged in as </p><h3 id="nameOfUser">{ this.props.username }</h3>
         </div>
         <button id="logout" onClick={ this.props.signOut }>LOGOUT</button>
       </div>
