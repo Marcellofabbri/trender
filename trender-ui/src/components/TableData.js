@@ -28,8 +28,8 @@ class TableData extends Component {
   }
 
   render() {
-    const { data, action, unit , viewLapse, viewWhat } = this.props;
-    var epochSeconds = parseInt((new Date().getTime())/1000);
+    const { data, action, unit , viewLapse, viewWhat, currentDate } = this.props;
+    var epochSeconds = parseInt((new Date(currentDate).getTime())/1000);
     if (typeof data == 'undefined') {
       return(
         <div>Select chart</div>
@@ -92,7 +92,8 @@ class TableData extends Component {
 const mapStateToProps = (state, ownProps) => {
   return {
     viewLapse: state.main.viewLapse,
-    viewWhat: state.main.viewWhat
+    viewWhat: state.main.viewWhat,
+    currentDate: state.main.currentDate
   }
 }
 

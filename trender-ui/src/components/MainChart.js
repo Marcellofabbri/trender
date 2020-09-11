@@ -15,7 +15,7 @@ import getDateNumber from '../helpers/getDateNumber.js';
 class MainChart extends Component {
   constructor(props) {
     super(props);
-    this.currentDate = new Date();
+    this.currentDate = new Date(props.currentDate);
     this.currentEpochSeconds = parseInt(this.currentDate.getTime()/1000);
     this.currentMonth = this.currentDate.getMonth();
     this.currentWeek = getWeekNumber(this.currentEpochSeconds)[1];
@@ -30,7 +30,7 @@ class MainChart extends Component {
   restrictDataAccordingToView(data) {
     let viewLapse = this.props.viewLapse;
     let restrictedData = data;
-    let currentDate = new Date();
+    let currentDate = new Date(this.props.currentDate);
     let currentEpochSeconds = parseInt(currentDate.getTime()/1000);
     switch (true) {
       case viewLapse.viewAll:
@@ -168,7 +168,8 @@ class MainChart extends Component {
 const mapStateToProps = (state, ownProps) => {
   return {
     viewLapse: state.main.viewLapse,
-    viewWhat: state.main.viewWhat
+    viewWhat: state.main.viewWhat,
+    currentDate: state.main.currentDate
   }
 }
 
