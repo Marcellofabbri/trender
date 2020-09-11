@@ -42,6 +42,28 @@ button {
   color: white;
 }
 
+#viewWeekly1 {
+  font-size: 12px;
+}
+
 #viewAll0, #viewMonthly0, #viewWeekly0, #viewDataOnly0, #viewWholePeriod0 {
   background-color: #DEDAF7;
+}
+
+#subtractMonth, #addMonth, #subtractWeek, #addWeek {
+  height: 4vh;
+  margin-left: 1vh;
+  margin-right: 1vh;
+  border-radius: 5px;
+  outline: none;
+}
+
+#subtractMonth:hover, #addMonth:hover, #subtractWeek:hover, #addWeek:hover {
+  background-color: #DEDAF7;
+  box-shadow: inset 130px 0 0 0 #F6EAAA;
+}
+
+.littleContainer {
+  padding: 0px;
+  margin: 0px;
 }

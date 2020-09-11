@@ -1,3 +1,5 @@
+import {addDays} from '../helpers/addDays.js';
+
 const initState = {
   items: [
     { id: 100, createdAt: '1588900820', value: 135, unit: 'grams'}
@@ -7,7 +9,8 @@ const initState = {
   ],
   selectedChartId: 0,
   viewLapse: {viewAll: true, viewMonthly: false, viewWeekly: false},
-  viewWhat: {viewDataOnly: true, viewWholePeriod: false}
+  viewWhat: {viewDataOnly: true, viewWholePeriod: false},
+  currentDate: new Date().toString()
 }
 
 const mainReducer = (state = initState, action) => {
@@ -59,6 +62,19 @@ const mainReducer = (state = initState, action) => {
         selectedChartId: 0
       }
       break;
+    case 'RESET_DATE':
+      let resetDate = new Date().toString();
+      return {
+        ...state,
+        currentDate: resetDate
+      }
+      break;
+    case 'CHANGE_DATE':
+      let newDate = action.newDate;
+      return {
+        ...state,
+        currentDate: newDate
+      }
   }
   return state;
 }
